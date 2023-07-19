@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Tag</title>
+    <style>
+      body {
+        margin : 0;
+      }
+    </style>
+</head>
+<body>
+    <!-- before -->
+    <!-- div 태그랑 역할로는 다른게 없다. 의미가 있는 태그 -->
+    <!-- 회사 로고, 메뉴 모음 -->
+    <header style="height: 50px; background: pink">Header</header>
+    <!-- min 하나의 html 문서의 하나의 main 태그가 바람직함. 주 컨텐츠 영역 -->
+    <main style="height: 1000px; background: skyblue; display: flex">
+      <!-- section은 article을 묶는 데 사용 -->
+      <aside style="background: royalblue; width: 15%">Aside</aside>
+      <section style="background: orange; width: 80%">
+        Section
+        <!-- article은 하나의 컨텐츠를 만들어낸다. -->
+        <article style="background: lime; height: 100px">Article</article>
+        <article style="background: darkgray; height: 100px">Article</article>
+        <article style="background: lime; height: 100px">Article</article>
+        <article style="background: darkgray; height: 100px">Article</article>
+      </section>
+      <!-- aside는 side에 위치하는 공간이다. 광고, 메뉴 구성-->
+      <aside style="background: royalblue; width: 15%">Aside</aside>
+    </main>
+    <!-- 저작권 정보, 법령, 회사 정보 등 입력 -->
+    <footer style="height: 50px; background: palegreen">Footer</footer>
+</body>
+</html>
