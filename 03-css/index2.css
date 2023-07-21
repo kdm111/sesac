@@ -1,0 +1,28 @@
+/* 전체 선택자 */
+* {
+    color : navy;
+}
+
+/* 태그 선택자 */
+h1 {
+    background-color: pink;
+}
+
+/* 클래스 선택자 */
+.second {
+    background-color: aquamarine;
+}
+
+/* id 선택자 */
+#first {
+    background-color: lightgreen;
+}
+
+/* 클래스 적용 예시 */
+.small {
+    font-size: 10px;
+}
+
+.big {
+    font-size: 20px;
+}

@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding : 0;
+    margin-bottom: 50%;
+}
+div {
+    width: 100px;
+    height: 100px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 100px;
+}
+/* position  */
+/* 
+    static은 기본 값
+    static inline 요소는 왼쪽에서 오른쪽으로 
+    block 요소는 위에서 아래로 쌓인다.
+*/
+.position-static {
+    position:static;
+    background-color: hotpink;
+}
+/* 
+    relative 상대 위치
+    일반적인 흐름에 따라 배치하는데, top, bottom, left, right 중 하나 이상을 써서
+    원래 있어야 하는 위치 기준으로 부터 t b l r 떨어진다.
+*/
+.position-relative {
+    position: relative;
+    /* left: 200px; */
+    /* right: 30px; */
+    /* bottom: 100px; */
+    /* top: 100px; */
+    
+    background-color: aquamarine;
+}
+/*
+    absolute 절대 위치
+    포지션 속성을 갖는 제일 가까운 조상을 기준으로 한다.
+    만약 position 조상이 없다면 body을 기준으로 한다.
+
+    특정 요소를 기준잡아서 t, b ,l ,r 만큼 이동한다.
+*/
+.position-absolute {
+    position: absolute;
+    top: 50px;
+    left : 50px;
+    background-color: gold;
+}
+/* 
+    fixed 고정 위치
+    뷰포트를 기준으로 특정 위치에 배치
+    뷰포트 : 브라우저, 디바이스의 화면 전체
+    스크롤이 되어도 움직이지 않는다.
+*/
+.position-fixed {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    background-color: coral;;
+}

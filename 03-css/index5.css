@@ -1,0 +1,62 @@
+body {
+    /* 
+        웹 폰트 
+        - 모든 브라우저에서 보는 폰트를 동일
+        - 폰트를 다운로드하는 것이 아니라 링크 태그에 걸려 있는 주소에서 폰트를 가져오는 방식
+        기본 태그는 바디 태그에 작성한다.
+    */
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+div {
+    color: royalblue;
+    background: linear-gradient(to right, pink, rgb(110, 145, 248));
+    /* 각도 조절 가능 */
+    /* background: linear-gradient(140deg, pink, rgb(110, 145, 248)); */
+
+    /* 폰트 */
+    font-size: 50px;
+    /* 폰트 굵기는 light, normal,bold, bolder */
+    font-weight: bolder;
+
+    /* 폰트 스타일은 normal italic,  */
+    font-style: italic;
+
+    /* center, left, right, justify(양쪽 정렬 글자 수가많을 때) */
+    text-align: center;
+
+    /* underline 밑줄, line-through: 취소선 overline: 위의 선 */
+    text-decoration: underline;
+
+
+    /* 줄 높이 */
+    /* line-height 1.2(default), 1.5배 */
+    /* line-height: 120px; */
+
+    /* 크기 */
+    /* min-width, max-width, min-height, max-height */
+    /* box-sizing 크기를 결정함 */
+    width: 600px;
+    height: 200px;
+
+    /* 테두리 */
+    /* border-style: solid; */
+    /* border-width: 5px; */
+    /* border-color: limegreen; */
+    /* 위의 3개는 다음과 같이 할 수 있다. */
+    border: solid 5px limegreen;  /* 단축 프로퍼티 */
+    border-radius: 20px;
+    border-top: solid 5px black;
+
+    /* 여백 */
+    /* padding-top padding-bottom padding-left padding-right */
+    /* margin-top margin-bottom margin-left margin-right */
+    padding: 100px;
+    margin: 10%;
+
+    /* 박스 모델 */
+    /* border-box : 콘텐트 + 패딩 + 보더 */
+    /* content-box : 콘텐트 */
+    box-sizing: border-box;
+    
+}

@@ -1,0 +1,32 @@
+
+body div + p {
+ background-color: red;
+}
+    
+.lion {
+    color: sienna;
+}
+.zoo ul .lion {
+    background-color: greenyellow;
+}
+.zoo .lion {
+    font-weight: bold;
+}
+#tiger {
+    background-color: yellow;
+}
+#tiger + li {
+    background-color: skyblue;
+}
+/* .zoo .lion +li ~ li {
+    background-color: orange;
+} */
+.zoo li.lion ~li {
+    background-color: orange;
+}
+/* 선택자.클래스 를 하게되면 선택자이자 클래스를 가진 요소를 선택한다. */
+p.lion {
+    background-color: red;
+}
+
+/* 선택자선택자 선택자이자 선택자인 요소를 선택할 수 있다. */

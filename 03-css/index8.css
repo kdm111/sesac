@@ -1,0 +1,22 @@
+/* 
+    콘텐츠나 코드가 너무 길어서 크기보다 넘치게 된다면 
+    -visible : 보여준다.
+    hidden  : 숨긴다.
+    scroll : 스크롤
+    auto : 넘친다면 스크롤, 안넘친다면 그냥
+
+    overflow-x : 수평 방향으로 넘칠 때
+    overflow-y : 수직 방향으로 넘칠 때
+*/
+
+.box {
+    background-color: skyblue;
+    width: 200px;
+    height: 60px;
+
+    /* overflow: visible; */
+    /* overflow: hidden; */
+    /* overflow: scroll; */
+    /* overflow: auto; */
+
+}

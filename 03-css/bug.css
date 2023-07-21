@@ -1,0 +1,60 @@
+div {
+    position:absolute;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border-radius: 50%;
+
+}
+.eye {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    top : 110px;
+    left: 120px;
+    z-index: 2;
+}
+.pupil {
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    top : 10px;
+    left: 0px;
+    z-index: 3;
+}
+
+.div1 {
+    background-color: skyblue;
+    top : 100px;
+    left : 100px;
+
+}
+.div2 {
+    background-color: royalblue;
+    top: 140px;
+    left : 160px;
+
+}
+
+.div3 {
+    background-color: navy;
+    top : 190px;
+    left : 230px;
+}
+.div4 {
+    background-color: rgb(34, 154, 240);
+    top: 190px;
+    left : 280px;
+}
+.div5 {
+    background-color: rgb(7, 89, 148);
+    top : 170px;
+    left : 350px;
+    z-index: 3;
+}
+
+img {
+    position: absolute;
+    top:180px;
+    z-index: 2;
+}

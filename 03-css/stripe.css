@@ -1,0 +1,10 @@
+
+.stripes > *:nth-child(2n - 1) {
+    color:white;
+    background-color: navy;
+    width:200px;
+}
+.stripes > *:nth-child(2n) {
+    background-color: yellow;
+    width:200px;
+} 

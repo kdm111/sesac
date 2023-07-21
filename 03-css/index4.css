@@ -1,0 +1,85 @@
+.div1 {
+    width:100px;
+    height: 100px;
+    background-color: aquamarine;
+}
+/* hover는 마우스를 올렸을 때 사용 */
+.div1:hover {
+    background-color: hotpink;
+    height: 150px;
+    transition: 0.4s;
+}
+/* active는 요소가 클릭하고 있을 때 */
+/* active는 hover를 포함하기 때문에 서로 중첩된다. */
+/* 서로 충돌이 일어날 경우 밑의 요소가 우선 시 된다. */
+.div1:active {
+    background-color: brown;
+    width:150px;
+}
+
+/* focus: 요소에 포커스가 됐을 때 */
+input:focus {
+    background-color: blueviolet;
+    color:white;
+    outline: 5px solid ;
+    outline-color: yellowgreen;
+}
+
+.links > a:hover {
+ background-color: coral;   
+}
+
+.links > a:visited {
+    color:grey;
+}
+
+/* 요소 상황에 따른 가상 선택자 */
+.zoo > * {
+    background-color: green;
+    color:white;
+}
+
+/* zoo에서 li요소의 마지막 */
+.zoo > li:last-child {
+    background-color: black;
+}
+/* zoo 하위에서 첫번째 요소 */
+/* 밑의 요소보다 더 특정 하므로 not보다 우선 순위가 더 높다. */
+.zoo > *:first-child {
+    background-color: red;
+}
+/* zoo의 직접 자식 중에서 div가 아닌 것들 */
+.zoo > *:not(div) {
+    background-color: pink;
+}
+
+/* zoo의 직접 자식 중에서 2번째 요소 선택 */
+/* 괄호 안은 숫자가 아니라 수식이여도 된다. */
+/* 미지수는 n으로 활용해야 하고 0부터 시작한다. */
+.zoo > :nth-child(n) {
+    background-color: aqua;
+}
+
+.box::before {
+    content:"taxi! ";
+    font-weight:bold;
+    color:red;
+    font-size: 32px;
+}
+.box::after {
+    content:"빨리!!";
+    color:blue;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+
+[disabled] {
+    background-color :red;
+}
+[placeholder="이름"] {
+    background-color: orange;
+}
+input:not([placeholder]) {
+    background-color: blue;
+}

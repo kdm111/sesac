@@ -1,0 +1,44 @@
+/* 하위(후손) 선택자 */
+
+body section {
+    /* 경계선 : 두께 선스타일 선색상 */
+    border: 1px solid blue;
+}
+
+body section h2 {
+    border: 1px solid green;
+}
+
+/* 자식 선택자 */
+.first > h2 {
+    color:white;
+    background-color: navy;
+}
+
+.second > h2 {
+    color:navy;
+    background-color: white;
+}
+
+/* 인접 형제 선택자 */
+/* kong의 바로 다음 형제가 li여야 한다. */
+#kong + li {
+    background-color: aqua;
+}
+
+/* 일반 형제 선택자 */
+#kong ~li {
+    /* 1. 색상 키워드 */
+    /* color: red; */
+    /* 2. 헥사 코드 */
+    /* color: #ff0000; */
+    /* 3. rgb */
+    color: rgb(255, 0, 0);
+}
+
+/* CSS 색상 적용 */
+/* 1. 색상 키워드: red, green, blue */
+/* 2. 헥사코드 */
+/* 3. rgb */
+
+
