@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS 시작</title>
+  <style>
+    body {
+      background-color: pink;
+    }
+  </style>
+  <!-- 순서는 html이 읽는 순서 -->
+  <script>
+    var ans = confirm("head 내부이다.")
+    // confirm의 리턴 값은 true or false
+    console.log(ans)
+  </script>
+    <style>
+      body {
+        background-color: red;
+      }
+    </style>
+  <script src="./index.js"></script>
+</head>
+<body>
+  <script>
+    alert("바디 내부")
+  </script>
+  <style>
+    body {
+      background-color: brown;
+    }
+  </style>
+  <script>
+    alert("스타일 이하")
+  </script>
+</body>
+<script>
+  alert("바디 이하")
+</script>
+</html>
