@@ -1,0 +1,26 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+    background-color: lightgray;
+    padding: 0 2.5%  ;
+}
+ul {
+    /* ul태그가 가지고 있는 기본 스타일 삭제 */
+    padding: 0;
+    display: flex;
+    line-height: 75px;
+    justify-content: space-between;
+    width : 20%;
+}
+
+header > * {
+    font-weight: bold;
+    list-style: none;
+    line-height: 100px;
+}
+
+#unvisible {
+    visibility: hidden;
+}

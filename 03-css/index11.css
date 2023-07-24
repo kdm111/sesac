@@ -1,0 +1,172 @@
+* {
+    margin :0;
+    box-sizing: border-box;
+}
+.container {
+    width: 700px;
+    height: 400px;
+    background-color: #333;
+    /* 요소를 가운데 정렬 */
+    /* width가 있어야 가운데 정렬을 함으로 width가 필요함 */
+    margin: 0 auto;   
+
+    /* 
+        flex 부모요소에 flex를 선언하면 자식 요소들이 가로 방향으로 붙어서 배치
+        기본 설정
+        justify-content : flex-start; 
+        align-items : stretch;
+    */
+    display: flex;
+    /* 세로 방향으로 나란하게 만들고 싶을 수도 있을 것이다. */
+    /*
+        flexbox 기본 용어
+        주축 : main axis : 아이템의 배치 방향 
+        교차축 : cross axis : 주축의 수직축
+    */
+    /* flex-direction */
+    /* 플렉스박스의 주축 방향을 결정 */
+    /* 
+        row : 수평정렬 (좌 -> 우)
+        row-reverse  : (우 -> 좌)
+        column : 위 ->아래
+        column-reverse : 아래 -> 위
+
+    */
+    flex-direction: row;
+    /* 
+        justify-content : 주축 아이템을 어떻게 배치할 것인가?
+        flex-direction이 수평 정렬이면 주축은 row
+        flex-direction이 수직 정렬이면 주축은 column
+
+        flex-start : 주축 방향으로 차례대로 놓음 (왼쪽으로 정렬)
+        flex-end : 주축 방향의 반대에서부터 나열 (
+        space-between : 모든 요소가 같은 마진를 가짐, 양쪽을 붙임.
+        space-around : 모든 요소가 같은 마진을 가짐, 양쪽을 붙이지 않음.
+        space-evenly : 모든 요소의 간격이 동일함
+    */
+    justify-content: space-evenly;
+
+    /* align-items */
+    /* 교차축에 대해서 아이템을 어떻게 배치할 것인지 정하는 속성 */
+    /* 
+        flex-direction이 수평 정렬이면 교차축은 column
+        flex-direction이 수직 정렬이면 교차축은 row
+
+        stretch : default 컨테이너의 교차축을 채우기 위해 늘어나야함
+        flex-start : 교차축의 시작점부터 정렬
+        flex-end : 교차축의 마지막 지점 부터 정렬
+        center : 교차축의 가운데지점을 기준으로 정렬
+        baseline : 자식의 글자 아랫줄로 정렬. 글자 크기가 각각 다를 때 사용가능
+    */
+    /* align-items: ; */
+
+    /* 
+        flex-wrap : 줄바꿈 개행 처리
+        컨테이너가 한 줄에 아이템을 다 수용하지 못할 때 줄바꿈 관련 설정
+    
+        nowrap : default 줄바꿈 안함
+        wrap : 줄 바꿈
+        wrap-reverse : 줄바꿈 하는 데 아이템을 역순 배치함 
+
+    */
+    flex-wrap : wrap;
+
+    /* 
+        align-content : 여러 행의 대한 정렬
+        flex-wrap : wrap, wrap-reverse 상태에서 아이템이 두 줄 이상일 때 수직축 방향 설정
+        큰 레이아웃을 잡을 때 사용
+        stretch : default 줄 개수 만큼  
+        flex-start
+        flex-end
+        center
+        space-between
+        space-around
+        space-evenly
+    */
+    align-content: space-evenly;
+}
+
+
+.items {
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    /* 줄 높이를 요소와 똑같이 맞추면 가운데에 온다. */
+    line-height: 100px;
+}
+
+.item1 {
+    background-color: crimson;
+    font-size: 50px;
+}
+.item2 {
+    background-color: coral;
+}
+.item3 {
+    background-color: gold;
+    font-size: 50px;
+
+}
+.item4 {
+    background-color: olivedrab;
+}
+.item5 {
+    background-color: dodgerblue;
+    font-size: 50px;
+
+}
+.item6 {
+    background-color: royalblue;
+}
+.item7 {
+    background-color: violet;
+}
+.item8 {
+    background-color: wheat;
+}
+.item9 {
+    background-color: silver;
+}
+.item10 {
+    background-color: dimgray;
+}
+
+/* div 안에 div 정가운데 정렬 */
+.outer {
+    width: 300px;
+    height: 300px;
+    margin: 10%;
+    background-color: dimgrey;
+
+    
+}
+.inner {
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+}
+/* 포지션과 트랜스폼 사용 */
+.outer1 {
+    /*  */
+    position: relative;
+
+}
+
+.inner1 {
+    /* 부모 요소에 대해서 상대적인 위치를 잡음 */
+    position: absolute;
+    /* 부모 위치에 대해서 50, 50 이동 */
+    top: 50%; left: 50%;
+    /* translate로 자식요소의 -50, -50으로 이동 */
+    transform: translate(-50%, -50%);
+}
+
+/* flex를 사용하여 정가운데 사용 */
+.outer2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

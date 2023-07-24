@@ -1,0 +1,61 @@
+.d-inline1 {
+    display: inline;
+    background-color: blue;
+    color: white;
+}
+
+.d-inline2 {
+    display: inline;
+    background-color: red;
+    color:white;
+}
+
+.d-block1 {
+    background-color: blue;
+    color: white;
+    width : 500px;
+
+}
+
+.d-block2 {
+    background-color: red;
+    color:white;
+    width : 400px;
+
+}
+
+.d-inline-block1 {
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    width:500px;
+    margin-right: 100px;
+
+}
+.d-inline-block2 {
+    display: inline-block;
+    background-color: red;
+    color: white;
+    width: 200px;
+    /* height: 200px; */
+    line-height: 200px;
+
+    /* 단축 프로퍼티 */
+    /* margin : top, bottom left, right */
+    /* margin : 1, 2, 3, 4; */
+    /* margin : top bottom, left right */
+    /* margin : 1, 2; */
+    margin: 20px 40px;
+
+}
+
+.d-none {
+    /* 요소를 html 문서에서 없게 만들어버린다. */
+    display: none;
+}
+
+.d-visibility {
+    /* 요소를 html 문서에서 안 보이게 만든다. */
+    /* 영역이 여전히 자리를 차지하는 것을 볼 수 있다. */
+    visibility: hidden;
+}
