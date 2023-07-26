@@ -103,4 +103,3 @@ var b = 2;
 //   return n ** 2
 // }
 // console.log(square(2))
-
