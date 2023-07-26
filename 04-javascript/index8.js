@@ -81,3 +81,22 @@ console.log('hello'.split('').reverse().join(""))
 
 
 
+let sum = 0
+for (let i = 0; i <= 100; i++) {
+  if (i % 2 == 0 && i % 5 == 0)
+    sum += i
+}
+
+for (let i = 13; i <= 10000; i++) {
+  if (i % 13 == 0 && i % 2 == 1)
+    console.log(i)
+}
+
+i = 2
+while (i <= 9) {
+  console.log(`---${i} 단---`)
+  for (let j = 1; j < 10; j++) {
+    console.log(`${i}x ${j} = ${i * j}`)
+  }
+  i += 1
+}
