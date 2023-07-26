@@ -65,3 +65,5 @@ console.log(result1, result2)
 console.log(num1, num2)
 // += -=를 더 자주 씀
 console.log(num1 += 1, num2 -= 1)
+
+
