@@ -106,16 +106,133 @@ console.log(temp)
 let x;
 console.log(x)
 
-
-
 let q1  = 2;
 q1 - 1;
 console.log(q1)
 
-
-
-
-
 // 객체 타입(object type)
 // the others...
 
+
+// 6. array (배열)
+// 배열의 이름은 fruits,배열의 원소(아이템)은 하낳나
+// 배열의 위치, index = 0
+// 배열의 길이(크기) : 원소의 개수와 동일
+const fruits = ["orange", "pineapple", "grape", "apple"]
+// const flowers = new Array() 이제는 더이상 사용하지 않음
+console.log(`${fruits}`, fruits)
+console.log(`${fruits[0]}`) // 배열의 위치가 0인 원소 출력
+
+// js에서는 배열 원소의 자료형이 달라도 된다.
+const data = [1, "name", false, null, undefined, Symbol("key")]
+
+// array 안에 array를 넣는 중첩이 가능하다.
+const korean = [
+  ["seoul", "busan"], ["가", "나", "다"], ["사", "아", "자"]
+]
+// 서울을 출력하고 싶다면 인덱싱 접근을 두번하면 된다.
+console.log(korean[0][0])
+// 합성해서 사용하는 것도 가능하다.
+console.log(korean[1][0] + korean[2][2])
+// 3차원 배열 역시 쉽게 가능하다.
+const nums = [
+  [
+    [1, 2, 3],
+    [4, 5, 6],
+  ],
+  [
+    [7, 8, 9],
+    [10, 11, 12],
+  ],
+];
+console.log(nums[1][0][1])
+
+
+// 7. object (key : value)
+const cat = {
+  name : "나비",
+  age : 1,
+  isCute : true,
+  mew : function(){return "mew"}
+}
+console.log(cat)
+// 고양이의 이름만을 출력하고 싶을 때는
+// 점 표기법과 대괄호 표기법을 사용한다.
+console.log(cat.name, cat["name"])
+// 대괄호 표기법은 key가 변수에 저장되어 있을 때 주로 사용
+const tempVal = "name"
+console.log(cat[tempVal], cat.tempVal) // 나비 undefined
+
+// 8.typeof
+// 더 편한 방식을 사용할 수 있다.
+// typeof(x) === typeof x
+console.log("aaa's type is",typeof "aaa")
+console.log("1's type is", typeof 1)
+console.log("3.14's type is", typeof 3.14)
+console.log("true's type is", typeof true)
+console.log("false's type is", typeof false)
+// null의 자료형이 object로 나온다.
+// 언어 자체의 오류
+console.log("null's type is", typeof null) 
+console.log("undefined's type is", typeof undefined)
+console.log("fruits's type is", typeof fruits)
+console.log("cat's type is", typeof cat)
+// 함수의 자료형은 함수
+console.log("mew's type is", typeof cat.mew)
+
+
+// 형 변환
+// let mathScore = prompt("수학 점수 입력 : ")
+// let engScore = prompt("영어 점수 입력 : ")
+// let avg = (mathScore + engScore) / 2
+
+// console.log(`평균 점수는 ${avg}입니다.`)
+// 자동 형변환
+// 점수가 마음대로 합쳐져서 바뀌면서 예기치 못한 에러를 발생시킬 수 있음
+
+// 형변환 1. String()
+
+let str1 = true;
+let str2 = 123;
+let str3 = null;
+console.log(String(str1), typeof String(str1)) // 
+console.log(String(str2), typeof String(str2)) // 
+console.log(String(str3), typeof String(str3)) // 
+
+// .toString()
+console.log(str1.toString(), typeof str1.toString()) // 
+console.log(str2.toString(), typeof str2.toString()) // 
+// console.log(str3.toString(), typeof str3.toString()) // null은 메서드 사용이 불가능하다.
+
+
+// 2. Number() 
+let n1 = true;
+let n2 = false;
+let n3 = "123.9"
+
+// 불리안의 경우 true = 1 false = 0으로 변경된다.
+console.log(Number(n1), typeof Number(n1))
+console.log(Number(n2), typeof Number(n2))
+console.log(Number(n3), typeof Number(n3))
+// 둘다 not a number 이지만 자료형은 
+console.log(Number(undefined), typeof Number(undefined))
+console.log(Number(null), typeof Number(null))
+
+// parseInt
+// parseInt의 경우 불리언을 숫자로 형변환하지는 못한다.(NaN)
+// 또한 실수형은 정수형으로 치환된다.
+console.log(parseInt(n1, 10), typeof parseInt(n1, 10))
+console.log(parseInt(n2, 10), typeof parseInt(n2, 10))
+console.log(parseInt(n3, 10), typeof parseInt(n3, 10))
+// 실수형을 그대로 표현하고 싶다면 parseFloat를 사용한다.
+console.log(parseFloat(n3, 10), typeof parseFloat(n3, 10))
+
+
+let mathScore;
+let engScore;
+mathScore = "77";
+engScore = "88";
+const avgScore = (Number(mathScore) + Number(engScore)) / 2
+console.log(`평균 점수 : ${avgScore}`)
+
+let d
