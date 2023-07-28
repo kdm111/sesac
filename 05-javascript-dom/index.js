@@ -126,10 +126,3 @@ console.log(Math.floor(Math.random() * 100) + 1) // [1, 101)
 console.log(Math.floor(Math.random() * 3) + 20) // [20, 23)
 
 
-// DOM (document object model)
-// 문서 객체 모델
-// xml이나 html 문서에 접근하기 위한 인터페이스로 문서 내의 모든 요소를 정의하고 
-// html -> dom tree html 계층 관계를 정의해서 돔트리로 생성
-// document가 최상 
-// dom 새로운 요소, 속성 추가제거, 
-// document html 객체에 접근하여 사용할 때 사용하는 객체
