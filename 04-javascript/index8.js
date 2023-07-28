@@ -133,6 +133,10 @@ const answer1 = words.filter(item => item.length > 3)
 const answer2 = words.filter(item => item.includes('a'))
 console.log(answer1, answer2)
 
-
-
+// for in 반복문
+// 객체의 key를 반복
+const me = {name : 'js', gender : 'f', hobby : 'movie'} 
+for (let k in me) {
+  console.log(k, me.k, me[k])
+}
 
