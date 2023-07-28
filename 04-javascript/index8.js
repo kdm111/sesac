@@ -78,25 +78,61 @@ console.log(arr1.join(" "))
 
 console.log('hello'.split('').reverse().join(""))
 
+// 배열 반복문 사용
+const arr3 = [1, 2, 3, 4, 5]
+const alphabets = ['a', 'b', 'c', 'd', 'e']
 
-
-
-let sum = 0
-for (let i = 0; i <= 100; i++) {
-  if (i % 2 == 0 && i % 5 == 0)
-    sum += i
+for (let a = 0; a < arr3.length; a++) {
+  console.log(arr3[a])
 }
-
-for (let i = 13; i <= 10000; i++) {
-  if (i % 13 == 0 && i % 2 == 1)
-    console.log(i)
+for (let alpha of alphabets) {
+  console.log(alpha)
 }
+alphabets.forEach(function(alpha, idx, arr) {
+    // alpha = currVal, idx = idx arr = alphabets
+  console.log(alpha, idx, arr)
+})
 
-i = 2
-while (i <= 9) {
-  console.log(`---${i} 단---`)
-  for (let j = 1; j < 10; j++) {
-    console.log(`${i}x ${j} = ${i * j}`)
-  }
-  i += 1
+// practice
+let numbers = [1,2,3,4,5,6]
+var sum1 = 0; var sum2 = 0; var sum3 = 0
+
+for (let i = 0; i < numbers.length ;i++) {
+  sum1  += numbers[i]
 }
+for (let num of numbers) {
+  sum2 += num
+}
+numbers.forEach((num) => {
+  sum3 += num
+})
+console.log(sum1, sum2, sum3)
+
+// map, filter, find method
+// 원소들을 계산하여 배열로 반환
+const arr4 = [1,2,3,4,5]
+const mapResult = arr4.map(e =>  e * 2)
+console.log(mapResult)
+// 조건에 맞는 원소들을 배열로 반환
+// const filterResult = arr4.filter(function(e) {
+//   return e >  2
+// })
+const filterResult = arr4.filter(e =>  e > 2)
+console.log(filterResult)
+
+// 조건에 맞는 첫번째 원소들을 반환 
+const findResult = arr4.find((e => e > 2))
+console.log(findResult)
+
+
+const words = ['dog', 'cat', 'rabbit', 'apple', 'wow'];
+
+// 1. 글자 수가 3개 초과인 단어만 필터링
+const answer1 = words.filter(item => item.length > 3)
+// 2. 글자에 'a' 문자가 포함되어 있는 단어만 필터링
+const answer2 = words.filter(item => item.includes('a'))
+console.log(answer1, answer2)
+
+
+
+
