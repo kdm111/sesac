@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    div {
+      margin-bottom: 0.5%;
+    }
+    label {
+      font-weight: 500;
+    }
+    input {
+      background-color: white;
+      border: 1px solid black;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <label for="value1">값1: </label>
+    <input type="text" id="value1" name="value1">
+  </div>
+  <div>
+    <label for="value2">값2: </label>
+    <input type="text" id="value2" name="value2">
+  </div>
+  <div>
+    <label for="op">연산자: </label>
+    <input type="text" id="op" name="op">
+  </div>
+  <div>
+    <label for="result">결과: </label>
+    <input type="text" id="result" name="result" disabled>
+  </div>
+  <button onclick="cal()">계산하기</button>
+  <button onclick="clean()">초기화</button> 
+  <script src="./cal.js"></script>
+</body>
+</html>
