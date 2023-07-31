@@ -26,11 +26,12 @@ btn1.addEventListener('mouseout', () => {
   btn1.style.backgroundColor = "rgb(44, 44, 44)";
 })
 
-btn2.addEventListener('click', () => {
+btn2.addEventListener('click', (e) => {
   const div = document.createElement("div")
   div.style.backgroundColor = "pink"
   div.innerHTML = "!!!!"
   container.append(div)
+  console.log(e)
 })
 
 btn3.addEventListener('click', changeColor)
@@ -40,13 +41,14 @@ function changeColor() {
     div.style.backgroundColor = "skyblue";
   }
 }
-btn4.addEventListener('click', func)
+btn4.addEventListener('click', changeColor)
 
 function func () {
   console.log(this) // 이 때의 함수는 클릭 이벤트의 모델을 의미한다.
   console.log(this.parentNode) // 이렇게 부모요소에 접근하는 것이 가능하다.
   this.style.backgroundColor = "darkred";
 }
+btn4.removeEventListener("click", this)
 
 const btn = document.querySelector('button');
 const input = document.querySelector('input');

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    header {
+      margin-bottom: 1%;
+    }
+    form  > div, button {
+      margin-bottom: 1%;
+    }
+    form > div > label {
+      font-weight: bold;
+    }
+    #form > div:nth-child(2) >input {
+      width: 30%
+    }
+  </style>
+  <title>방명록</title>
+</head>
+<body>
+  <header>방명록입니다.</header>
+  <main>
+    <form id="form">
+      <div>
+        <label for="writer">작성자</label>
+        <input type="text" name="writer">
+      </div>
+      <div>
+        <label for="content">내용</label>
+        <input type="text" name="content">
+      </div>
+      <button>작성</button>
+    </form>
+    <table id="table">
+      <tr>
+        <th>번호</td>
+        <th>작성자</td>
+        <th>내용</td>
+        <th>작성일</td>
+      </tr>
+    </table>
+  </main>
+  
+  <script src="./guestbook.js"></script>
+</body>
+</html>
