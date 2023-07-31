@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미디어 쿼리 실습</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dokdo&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #header {
+      display: flex;
+      justify-content: space-around;
+      height: 100px;
+      background-color: skyblue;
+    }
+    #imageContainer {
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #ul {
+      width: 20%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin:  0;
+    }
+    #ul > * {
+      list-style: none;
+      font-weight: bold;
+    }
+    #ul + ul {
+      width: 20%
+    }
+    @media screen and (max-width: 768px) {
+      #header {
+        height: 60px;
+        flex-direction: column;
+      }
+      #imageContainer {
+        width: 100%;
+        height: 12px;
+      }
+      #imageContainer > img {
+        width: 10px;
+        height: 10px;
+      }
+      #ul {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        height: 48px;
+        background-color: rgb(196, 224, 235);
+      }
+      #ul > li {
+        margin: 0;
+        height: 12px;
+        font-size: 12px;
+        line-height: 12px;
+        font-weight: 400; 
+      }
+      #ul + ul {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div id="imageContainer">
+      <img width="60" height="60" src="https://img.icons8.com/doodle/96/igloo.png" alt="igloo"/>
+    </div>
+    <ul id="ul">
+      <li>메뉴1</li>
+      <li>메뉴2</li>
+      <li>메뉴3</li>
+      <li>메뉴4</li>
+    </ul>
+    <ul>
+      </ul>
+  </header>
+</body>
+</html>

@@ -1,19 +1,19 @@
-@media screen and (orientation : landscape) {
+@media screen and (orientation: landscape) {
     body {
         background-color: tomato;
     }
-}
+  }
 
 @media screen and (orientation : portrait) {
     body {
-        background-color: lightgreen;
+        background-color: #90ee90;
     }   
 }
 
-/* body {
+body {
     margin : 0;
     padding: 0;
-} */
+}
 .header {
     background-color: palevioletred;
     height: 120px;

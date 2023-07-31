@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid System</title>
+    <!-- Bootstrap CDN (css) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap CDN (js) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap은 아이콘이 조금 얇고 폰트 awesome은 굵다. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  </head>
+  <body>
+    <h1>Grid system</h1>
+    <!-- 부트스트랩은 12칸을 기준으로 그리드가 설정된다. -->
+    <div class="container bg-dark">
+      <div class="row">
+        <div class="col py-3 bg-success"></div>
+        <div class="col py-3 bg-warning"></div>
+        <div class="col py-3 bg-info"></div>
+        <div class="col py-3 bg-dark"></div>
+
+      </div>
+      <div class="row">
+        <div class="col-4 py-3 bg-primary"></div>
+        <div class="col-4 py-3 bg-danger"></div>
+        <div class="col-4 py-3 bg-secondary"></div>
+        <!-- 12가 넘었을 경우  줄바꿈이 일어난다.-->
+        <div class="col-4 py-3 bg-white"></div>
+
+      </div>
+      <div class="row">
+        <div class="col-8 py-3 bg-primary"></div>
+        <div class="col-4 py-3 bg-danger"></div>
+      </div>
+      <div class="row">
+        <div class="col-9 py-3 bg-warning"></div>
+        <div class="col-3 py-3 bg-success"></div>
+      </div>
+      <!-- 이렇게 중간에 메인컨텐츠를 넣고 알아서 나눠 가질 수 있게 만든다.-->
+      <div class="row">
+        <div class="col py-3 bg-secondary"></div>
+        <div class="col-7 py-3 bg-primary"></div>
+        <div class="col py-3 bg-secondary"></div>
+      </div>
+      <!-- 중첩이 가능하다. -->
+      <div class="row bg-danger p-2">
+        <div class="col-8 bg-danger">
+          <!-- 위에 있던 8을 상속받아 절반씩 나누니 4,4가 된다. -->
+          col-8
+          <div class="row">
+            <div class="col-6 py-3 bg-info">col-4</div>
+            <div class="col-6 py-3 bg-success">col-4</div>
+          </div>
+        </div>
+        <div class="col-4 py-2 bg-warning">col-4</div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- 크기는 layout-breaking point 확인 -->
+      <!-- sm이상일때 9만큼 할당해라 -->
+      <div class="col-sm-9 bg-secondary">col-sm-9</div>
+      <!-- sm이상 일 때 3만큼 설정해라 -->
+      <div class="col-sm-3 bg-warning">col-sm-3</div>
+      <!-- sm미만일 경우 줄바꿈이 일어남 -->
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm bg-success">sm</div>
+      <div class="col-sm bg-info">sm</div>
+      <div class="col-sm bg-danger">sm</div>
+    </div>
+    <div class="row">
+      <!-- sm보다 크면 각자 크기만큼 가지되 작은 화면의 경우 6,6씩만 나눠가진다. -->
+      <div class="col-6 col-sm-9 bg-secondary">col-6 col-sm-9</div>
+      <div class="col-6 col-sm-3 bg-warning">col-6 col-sm-3</div>
+    </div>
+    <div class="row">
+      <!-- lg보다 크면 각자 크기만큼 가지되 작은 화면의 경우 5,7씩만 나눠가진다. -->
+      <div class="col-5 col-lg-9 bg-success">col-5 col-lg-9</div>
+      <div class="col-7 col-lg-3 bg-danger">col-7 col-lg-3</div>
+    </div>
+    <div class="row">
+      <div class="col col-sm-3 col-md-6 col-lg-4 bg-dark">col col-sm-3 col-md-6 col-lg-4</div>
+      <div class="col col-sm-9 col-md-6 col-lg-8 bg-info">col col-sm-9 col-md-6 col-lg-8</div>
+
+    </div>
+    <!-- gutter -->
+    <div class="row gx-3 gy-3">
+      <div class="col-3 py-3 bg-warning text-center">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis aliquid explicabo qui veniam odit nam, laudantium at cum. Quidem quibusdam illo fugit harum adipisci, id quas porro suscipit temporibus nobis.
+        Facilis officiis itaque repellat maiores suscipit, molestiae minus nam rerum incidunt, cum voluptatem quod accusamus dolor, non sint at! Sed molestiae non doloribus cum illum quod dolore omnis provident et.
+        At neque adipisci ut blanditiis nulla accusantium dolorem dolores optio ipsa incidunt nisi enim, aperiam laudantium nobis tempore porro perferendis veniam iure esse iusto voluptates ad! Deleniti corrupti sunt blanditiis.
+        Quaerat, laborum eos numquam aliquid in culpa et debitis possimus architecto illum fugit, explicabo quisquam ipsam illo, corrupti nesciunt dolorem odit maxime? Ad, sunt? Velit, ratione minima. Dolorem, porro esse.
+        Quidem vitae quaerat voluptatum cupiditate labore quia eius sequi ab. Quia repudiandae blanditiis impedit reprehenderit iusto recusandae, incidunt similique voluptates et beatae asperiores excepturi minima nesciunt. Saepe iure animi harum.
+        Repellendus obcaecati facilis perferendis repudiandae consequuntur beatae atque similique sunt molestias itaque quibusdam rem non illo adipisci at veniam incidunt dignissimos, earum ipsum dolorem eum amet nam doloremque? Vero, eius!
+        Atque quas repellat similique, fuga voluptate repudiandae vitae deserunt eius nemo sed enim explicabo aut odit deleniti perspiciatis quia, ipsa labore itaque, eaque animi maiores suscipit natus. Sunt, officiis similique.
+        Iure eaque molestiae architecto, inventore deserunt fuga quam blanditiis voluptatem tempora laborum libero facere quasi repellat possimus consequuntur ipsum veniam officia, odit voluptas nostrum ex, deleniti minus itaque quibusdam. Rerum!
+        Iste aut possimus, voluptatem expedita iure est sint eveniet, quidem quis quos, dolorem voluptatibus. Iste officiis alias nostrum quo, debitis nihil, iure iusto earum, fugiat in nemo ex porro voluptas!
+      </div>
+      <div class="col-9 py-3 bg-success">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste facilis officiis omnis maiores, cum odio error exercitationem dolorem quas reprehenderit, amet maxime eaque, dolores illum at magni praesentium eligendi non!
+      Repudiandae dignissimos nobis tenetur. Natus optio eaque sequi doloremque tempora officia ullam ex, molestiae illum cupiditate, dolorem, laudantium ut architecto! Dicta vitae distinctio asperiores, eveniet quos blanditiis quis labore quo.
+      Placeat laboriosam fuga voluptates illum vel perferendis quo veniam velit, aliquid amet earum pariatur quasi consequuntur eos dolore blanditiis libero consectetur id ad hic deserunt esse ea. Tempora, error incidunt?
+      Harum natus recusandae deserunt asperiores! Esse voluptatibus sunt officiis nulla cumque accusamus veniam, saepe tempore autem fuga modi corrupti enim commodi hic cupiditate assumenda ducimus impedit. Eius libero pariatur rerum?
+      </div>
+    </div>
+
+  </body>
+</html>

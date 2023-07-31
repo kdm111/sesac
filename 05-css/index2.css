@@ -1,0 +1,23 @@
+body {
+    background-color: azure;
+    margin-bottom: 50%;
+}
+.box {
+    display: inline-block;
+    margin: 0 0 0 1%;
+    width: 100px;
+    height: 100px;
+    background-color: aliceblue;
+}
+.my-center {
+    background-color: salmon;
+    width: 300px;
+}
+.my-width {
+    background-color: crimson;
+    margin-bottom: 0.5%;
+}
+.my-height {
+    background-color: darkolivegreen;
+    margin: 0 1% 0 0;
+}
