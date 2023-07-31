@@ -1,0 +1,58 @@
+@media screen and (orientation : landscape) {
+    body {
+        background-color: tomato;
+    }
+}
+
+@media screen and (orientation : portrait) {
+    body {
+        background-color: lightgreen;
+    }   
+}
+
+/* body {
+    margin : 0;
+    padding: 0;
+} */
+.header {
+    background-color: palevioletred;
+    height: 120px;
+    
+}
+.main {
+    background-color: azure;
+    display: flex;
+}
+.section {
+    background-color: royalblue;
+    width: 80%;
+}
+.aside {
+    background-color: darkcyan;
+    width: 20%
+}
+
+.footer {
+    background-color: goldenrod;
+}
+/* viewport width가 480미만일 경우*/
+@media (max-width : 480px) {
+    
+    .header {
+        height: 60px;
+    }
+    .main {
+        flex-direction: column-reverse;
+    }
+    .section {
+        width: 100%;
+    }
+    
+    .aside {
+        /* display: none; */
+        width: 100%;
+    }
+}
+/* JS로만 해야 하는 경우에 JS를 사용하고 
+    CSS로만 사용해야 하는 경우 CSS를 사용한다.
+*/

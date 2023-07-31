@@ -1,2 +1,6 @@
 .DS_Store
+img/
+package-lock.json
+package.json
+/node_modlues
 /img
