@@ -1,0 +1,56 @@
+* {
+    margin : 0;
+    padding : 0;
+}
+#container {
+    display: flex;
+    justify-content: space-between;   
+    align-items: center;
+    padding: 5%;
+}
+
+#inputForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: beige;
+    border-radius: 5%;
+    padding: 5%;
+    width: 20vw;
+    height: 20vh;
+    font-size: 1.5rem;
+}
+
+#calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 60vw;
+    font-size: 1.5rem;
+}
+
+#calendar > h3 {
+    font-size: 2rem;
+    color : green;
+    margin-bottom: 10%;
+}
+#calendar > table {
+    width: 30vw;
+    height: 50vh;
+    text-align: center;
+}
+#calendar > table th:nth-child(1) {
+    color: red;
+}
+
+#calendar > table th:nth-child(7) {
+    color: blue;
+}
+#calendar > table td:nth-child(1) {
+    color: red;
+}
+
+#calendar > table td:nth-child(7) {
+    color: blue;
+}
