@@ -9,7 +9,7 @@
     padding: 5%;
 }
 
-#inputForm {
+#todoForm {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -37,7 +37,7 @@
 }
 #calendar > table {
     width: 30vw;
-    height: 50vh;
+    height: 80vh;
     text-align: center;
 }
 #calendar > table th:nth-child(1) {
