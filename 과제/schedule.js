@@ -18,7 +18,7 @@ todoForm.on("submit", (e) => {
     alert("내용을 입력해주세요")
   } else {
     console.log(target.parentNode)
-    target.parentNode.style.textAlign = "start"
+    target.parentNode.style.verticalAlign = "top"
     target.innerHTML = `${target.innerHTML}<br><span style="font-size: 10px;">${contentInput.val()}</span>`
     dateInput.val("")
     contentInput.val("")

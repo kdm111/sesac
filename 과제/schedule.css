@@ -36,9 +36,12 @@
     margin-bottom: 10%;
 }
 #calendar > table {
-    width: 30vw;
-    height: 80vh;
     text-align: center;
+    width: 30vw;
+    height: 40vh;
+}
+td {
+    max-height: 200px;
 }
 #calendar > table th:nth-child(1) {
     color: red;
