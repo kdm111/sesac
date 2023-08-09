@@ -4,5 +4,5 @@ package-lock.json
 package.json
 /node_modlues
 /img
-
+node_modules/
 *.DS_Store
