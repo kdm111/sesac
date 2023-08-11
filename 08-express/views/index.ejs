@@ -30,12 +30,13 @@
       color: blueviolet;
     }
     div > *:nth-child(7) {
-      color: gainsboro;
+      color: dimgray;
     }
     a {
       font-size: 1em;
     }
   </style>
+  <link rel="stylesheet" href="./public/css/home.css">
 </head>
 <body>
   <%- include('./includes/header.ejs') %>
@@ -58,7 +59,7 @@
   </div>
   <h1><%= me.name%></h1>
   <%  if (!isLogin) {%>
-    <h2>로그인 되어 있지 않다.</h2>  
+    <h2>로그인 되어 있지 않습니다.</h2>  
   <%} else {%>
     <h2>로그인 성공</h2>  
   <%} %>

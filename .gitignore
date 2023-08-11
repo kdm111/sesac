@@ -5,3 +5,5 @@ package-lock.json
 /img
 node_modules/
 *.DS_Store
+images/
+/images

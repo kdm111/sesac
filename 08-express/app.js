@@ -8,20 +8,22 @@ const PORT = 8080
 const idFromDb = "banana"
 const pwdFromDb = "1234"
 
+
 // express에게 템플릿 엔진을 등록하는 과정이 필요하다.
 app.set("view engine", "ejs") // 템플릿 엔진 등록
 app.set("views", "./views") // 템플릿 엔진 파일 작성 위치
-
+// static 미들웨어 등록
+// 주소를 먼저 설정하기 위해 __dirname을 확인한다.
+// 그 뒤에 
+app.use("/public", express.static(__dirname + "/views/static")) //
 
 // get(경로, 해당 경로로 들어왔을 때 실행할 함수)
 // '/' : 서버주소 포트 번호 (localhost:PORT/)
 app.get("/", (req, res) => {
   // 응답으로 메시지를 보낸다.
   // res.send("<h1>hello express</h1>")
-
   // 이미 views라고 폴더를 지정했기 때문에
   // index를 그리라는 명령어를 내리면 된다.
-
   res.render("index", {
     idFromDb : idFromDb, 
     pwdFromDb : pwdFromDb, 
@@ -29,7 +31,7 @@ app.get("/", (req, res) => {
     me : {
       name : "JS"
     },
-    isLogin : true,
+    isLogin : false,
     title : "Main"
   })
 })
