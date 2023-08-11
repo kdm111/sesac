@@ -23,15 +23,16 @@ const fs = require("fs")
 const server = http.createServer((req, res) => {
   // file을 읽다가 어떤 에러로 인해 에러 처리
   try {
-
+    const errorAlert = fs.readFileSync("./index2.html")
     res.writeHead(200, {"content-type" : "text/html; charset=utf8"}) // 응답 헤더 
     // const data = fs.readFileSync("./index.html")
     res.write(fs.readFileSync("./index.html")) // 응답 본문
     res.end()// 응답 본문 작성 후에 응답 종료
   } catch (err) {
-    console.error(err)
-    res.writeHead(404, {"content-type" : "text/html; charset=utf8"})
     const data = fs.readFileSync("./404.html")
+    res.writeHead(404, {"content-type" : "text/html; charset=utf8"})
+    console.log(data)
+    // console.error(err)
     res.write(data)
     res.end()
   }

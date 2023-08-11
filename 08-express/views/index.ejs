@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <%- include("./includes/head.ejs") %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+    }
+    h1 {
+      font-size: 5em;
+    }
+    div > *:nth-child(1) {
+      color:crimson;
+    }
+    div > *:nth-child(2) {
+      color:orangered;
+    }
+    div > *:nth-child(3) {
+      color: orange;
+    }
+    div > *:nth-child(4) {
+      color: green;
+    }
+    div > *:nth-child(5) {
+      color: mediumblue;
+    }
+    div > *:nth-child(6) {
+      color: blueviolet;
+    }
+    div > *:nth-child(7) {
+      color: gainsboro;
+    }
+    a {
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <%- include('./includes/header.ejs') %>
+  <h1>hello Express</h1>
+  <div>
+    <% for(let i = 0; i <  7; i++){ %>
+      <h3>hello EJS</h3>
+    <% } %>
+    <h2><%= idFromDb%>님 환영합니다.</h2>
+    <h2>당신의 비밀번호는 <%= pwdFromDb%>입니다.</h2>
+    <a href="./login">login</a>
+    <a href="./register">register</a>
+    <br>
+    <!-- <% for(let i = 0; i <  btns.length; i++){ %>
+      <button type="button" class="btn btn-primary"><%= btns[i]%></button>
+    <% } %> -->
+    <% for(let btn of btns){ %>
+      <button type="button" class="btn btn-success"><%= btn%></button>
+    <% } %>
+  </div>
+  <h1><%= me.name%></h1>
+  <%  if (!isLogin) {%>
+    <h2>로그인 되어 있지 않다.</h2>  
+  <%} else {%>
+    <h2>로그인 성공</h2>  
+  <%} %>
+</body>
+</html>

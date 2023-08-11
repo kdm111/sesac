@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include("./includes/head.ejs") %>
+  <style>
+    form {
+      /* width: 80%;
+      height: 50%;
+      margin: 0 10 0 10; */
+      /* display: block; */
+      margin : 0;
+      flex-direction: column;
+      position: absolute;
+      top: 50%;
+      left : 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <%- include('./includes/header.ejs') %>
+  <form class="row g-3">
+    <div class="col-12">
+      <label for="inputEmail4" class="form-label">이메일</label>
+      <input type="email" class="form-control" id="inputEmai">
+    </div>
+    <div class="col-12">
+      <label for="inputPassword4" class="form-label">비밀번호</label>
+      <input type="password" class="form-control" id="inputPassword">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Log in</button>
+      <button type="submit" class="btn btn-danger">
+        <a href="./register" style="color:white;">회원가입하기</a>
+      </button>
+    </div>
+  </form>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    
+    form {
+      margin : 0;
+      flex-direction: column;
+      position: absolute;
+      top: 50%;
+      left : 50%;
+      transform: translate(-50%, -50%);
+    }
+
+  </style>
+  <%- include("./includes/head.ejs") %>
+</head>
+<body>
+  <%- include('./includes/header.ejs') %>
+  <form class="row g-6">
+    <div class="col-12">
+      <label for="inputEmail4" class="form-label">이메일</label>
+      <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div class="col-12">
+      <label for="inputPassword4" class="form-label">비밀번호</label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">주소</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="서울시">
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          이용 약관에 동의하시겠습니까?
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+      <button type="submit" class="btn btn-danger">
+        <a href="./login" style="color:white;">로그인하기</a>
+      </button>
+    </div>
+  </form>
+</body>
+</html>
