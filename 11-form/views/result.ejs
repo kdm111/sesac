@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  <h1> <%= title %></h1>
+  <div><span><%= userInfo.name %></span>님 환영합니다.</div>
+  <div>성별은 <span><%=userInfo.gender %></span>입니다.</div>
+  <div>생년월일은 <span><%=userInfo.year %>년 <%=userInfo.month %>월 <%=userInfo.days %>일</span>입니다.</div>
+  <% if (userInfo.travel === "on") { %>
+    <div>여행을 좋아하시네요</div>
+  <% } %>
+  <% if (userInfo.fashion === "on") { %>
+    <div>패션을 좋아하시네요</div>
+  <% } %>
+  <% if (userInfo.food === "on") { %>
+    <div>음식을 좋아하시네요</div>
+  <% } %>
+</body>
+</html>

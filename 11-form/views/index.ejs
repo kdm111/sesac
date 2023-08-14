@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1><%- title %></h1>
+  <!-- <h2>Get 요청</h1>
+  <form action="/getform" method="get" name="getform" target="_self">
+    <input type="text" placeholder="ID" name="id">
+    <input type="password" placeholder="PW" name="password">
+    <button type="submit">제출</button>
+  </form>
+  <h2>Post 요청</h2>
+  <form action="/postform" method="post" name="postform">
+    <input type="text" placeholder="ID" name="id">
+    <input type="password" placeholder="PW" name="password">
+    <button type="submit">제출</button>
+  </form> -->
+
+  <form action="./getform" method="get" style="width: 35%; height:50vh; display: flex; flex-direction: column; justify-content: space-around;">
+    <label for="name">이름</label> <input type="text" name="name">
+    <fieldset>
+      <legend>성별</legend>
+      <input type="radio" name="gender" value="male"> <label for="male">남자</label>
+      <input type="radio" name="gender" value="female"> <label for="female"> 여자</label>
+    </fieldset>
+    <fieldset>
+      <legend>생년월일</legend>
+      <select name="year" id="year">
+          <% for (let i = 1900; i <= 2023; i++) { %>
+            <option value="<%=i %>"><%= i %><span>년</span></option>
+          <% } %>
+      </select>
+      <select name="month" id="month">
+        <% for (let i = 1; i <= 12; i++) { %>
+          <option value="<%=i %>"><%=i%><span>월</span></option>
+        <% } %>
+      </select>
+      <select name="days" id="days">
+        <% for (let i = 1; i <= 31; i++) { %>
+          <option value="<%=i %>"><%=i%><span>일</span></%option>
+        <% } %>
+      </select>
+    </fieldset>
+    <fieldset>
+      <legend >관심사</legend>
+      <input type="checkbox" name="travel"> 여행
+      <input type="checkbox" name="fashion"> 패션
+      <input type="checkbox" name="food"> 음식
+    </fieldset>
+    <button type="submit">회원가입</button>
+  </form>
+</body>
+</html>
