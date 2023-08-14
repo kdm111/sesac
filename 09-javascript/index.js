@@ -133,4 +133,107 @@ let obj = {
 
 
 
+// Class
+// 
+class House {
+  // 생성자 함수로 
+  // 인스턴스를 생성할 때마다 속성을 초기화한다.
+  constructor(year, name, window) {
+    // 여기에서 말하는 this는 인스턴스를 가리킨다.
+    this.year = year
+    this.name = name
+    this.window = window
+    if (this.name == "삼각형") {
+      throw new Error("삼각형이 될 수 없다.")
+      // console.log()
+    }
+  }
+  // 메서드 1
+  getAge() {
+    console.log(`${this.name}은 건축한 지 ${new Date().getFullYear() - this.year}년 되었다.`)
+  }
+
+  // 메서드 2
+  getWindow() {
+    console.log(`${this.name}은 ${this.window}개의 창문이 존재한다.`)
+  }
+}
+
+
+// const house = new House(2023, "castle", 1)
+// console.log(house, typeof house)
+// house.getAge()
+
+// const house2 = new House(2007, "자이", 10)
+// house2.getAge()
+// house2.getWindow()
+
+class Shape {
+  constructor(width,height) {
+    this.width = width
+    this.height = height
+  }
+  getArea() {
+    return this.width * this.height
+  }
+}
+
+
+
+class Rectangle extends Shape {
+  constructor(width, height) {
+    super(width, height)
+  }
+  getDiagonal() {
+    return Math.sqrt(this.width ** 2 + this.height ** 2)
+  }
+}
+class Triangle extends Shape {
+  constructor() {
+    super()
+    this.radius = radius
+  }
+  getArea() {
+    return (super.getArea() / 2)
+  }
+}
+class Circle extends Shape {
+  constructor(width, height, radius) {
+    super()
+    this.radius = radius 
+  }
+  getArea() {
+    return (this.radius ** 2) * Math.PI
+  }
+}
+const rectangle = new Rectangle(5,6)
+console.log(rectangle.getArea())
+const triangle = new Triangle(5,6)
+console.log(triangle.getArea())
+const circle = new Circle(1)
+console.log(circle.getArea())
+
+// super가 사용되기 전까지 this키워드는 사용될 수 없다.
+// super가 호출되기 전까지 this는 초기화 될 수 없다. 이 상태에서 사용된다면 this 예외가 발생한다.
+//https://stackoverflow.com/questions/31067368/how-to-extend-a-class-without-having-to-use-super-in-es6
+
+// class Apartment extends House {
+//   constructor(year, name, window, floor, windowMaker) {
+//     // 부모 클래스가 가지고 있는 속성을 그대로 사용하기 위해서 super를 사용한다.
+//     // 상속한 부모 클래스의 생성자를 그대로 호출한다.
+//     super(year, name, window)
+//     this.floor = floor
+//     this.windowMaker = windowMaker
+//   }
+//   getAptInfo() {
+//     return `${this.year}에 지어진 ${this.name} 아파트의 총 층수는 ${this.floor}이며, 창문의 개수는 ${this.window}입니다.`
+//   }
+//   // overriding 
+//   // 부모 메서드의 이름을 동일하게 사용하되 내용은 다르게 사용하고 싶을 때 사용한다.
+//   getWindow() {
+//     return `${this.name}아파트의 ${this.window}개의 창문은 ${this.windowMaker}사에서 생성됨`
+//   }
+// }
+// const apt1= new Apartment(2022, "래미안", 3, 20, "KCC")
+// console.log(apt1.getWindow())
 

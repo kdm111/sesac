@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 style="color:white;">콜백지옥 예시</h1>
+
+    <script>
+      const palette = ["red", "orange", "yellow", "green", "blue"]
+      // 1. 1초 뒤에 body 태그의 색상을 빨간색 변경 (setTimeout)
+      function bodyColorChange(i) {
+        const body = document.body
+        body.style.backgroundColor = palette[i]
+      }
+      // setTimeout(() => {
+      //   bodyColorChange(0)
+      // }, 1000)
+      // 2. 1초 뒤에 body 태그의 색상을 빨 -> 1초 뒤 주 -> ... -> 1초 뒤에 파란색
+      // let i = -1
+      // let n;
+      // function changeColor() {
+      //   n = setInterval(() => {
+      //     i += 1
+      //     bodyColorChange(i)
+      //     if (i == 5) {clearInterval(n)}
+      //   }, 1000)
+      // }
+      // changeColor()
+      i = 5
+      setTimeout(
+        bodyColorChange(i), 
+      1000)
+      setT(setT(setT(setT(setT()))))
+    </script>
+  </body>
+</html>
+
+<!-- // 1초 뒤에 body 태그 색상을 빨간색으로 변경
+      //   setTimeout(function () {
+      //     const body = document.body;
+      //     body.style.background = 'red';
+      //   }, 1000);
+2// setTimeout(function () {
+        const body = document.body;
+        body.style.background = 'red';
+        setTimeout(function () {
+          body.style.background = 'blue';
+          setTimeout(function () {
+            body.style.background = 'black';
+          }, 1000);
+        }, 1000);
+      }, 1000); -->
