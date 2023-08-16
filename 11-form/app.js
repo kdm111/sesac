@@ -27,14 +27,17 @@ app.get("/", (req, res) => {
 // getForm의 데이터를 받을 서버의 주소가 필요하다.
 app.get("/getform", (req, res) => {
   // res.send("get 요청 성공")
-  // console.log(req.query)
-  console.log(req.query)
+  // console.log(req.query) // getdata
+  console.log(req.query) // get data
+
   res.render("result", {title : "get 유저 정보", userInfo : req.query})
 })
 
 // postForm의 데이터를 받을 서버의 주소가 필요하다.
 app.post("/postform", (req, res) => {
   // res.send("post 요청 성공")
+  // console.log(req.body) // post 요청 폼의 데이터는 바디에 존재한다.
+  console.log(req.body)
   res.render("result", {title : "post 유저 정보", userInfo : req.body})
 })
 

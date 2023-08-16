@@ -19,5 +19,19 @@
   <% if (userInfo.food === "on") { %>
     <div>음식을 좋아하시네요</div>
   <% } %>
+  <div>좋아하는 색상</div>
+  <div style="width: 100px; height: 100px; background-color:<%= userInfo.color %>;"></div> 
+  <div><span>좋아하는 숫자 : <%=userInfo.number %></span></div>
+  <!-- 각 요청이 다르므로 조건문을 추가하여 ux를 높인다.-->
+  <!-- <div><span><%= userInfo.id %></span>님 환영합니다.</div>
+  <div>비밀번호은 <span><%=userInfo.password %></span>입니다.</div>
+  <% if (userInfo.email) { %>
+    <div>이메일은 <span><%=userInfo.email %></span>입니다.</div>
+  <% } %>
+  <% if (userInfo.grade) { %>
+    <div>학년은 <span><%=userInfo.grade %></span>입니다.</div>
+  <% } %> -->
+  <script>
+  </script>
 </body>
 </html>
