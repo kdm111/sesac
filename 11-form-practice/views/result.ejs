@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=s, initial-scale=1.0">
+  <title>Result</title>
+  <style> 
+      *  {
+        font-family: "배달의민족 한나는열한살";
+
+
+      }
+      @font-face {
+        font-family: "배달의민족 한나는열한살";
+        src: url(/기타/TossFaceFontMac.ttf);
+      }
+  </style>
+</head>
+<body>
+  <h1>폼 전송 결과</h1>
+  <ul>
+    <li>이름: <%= user.username %></li>
+    <li>성별: <%= user.gender %></li>
+    <li>생일: <%= user.birthYear %>년 <%= user.birthMonth %>월 <%= user.birthDay %>일</li>
+    <li>취미: <%= user.hobby %> </li>
+    <% if (user.myColor) { %>
+      <li>색상: <%= user.myColor %></li>
+    <% } %>
+    <% if (user.myNumber) { %>
+      <li>숫자: <%= user.myNumber %></li>
+    <% } %>
+  </ul>
+</body>
+</html>
