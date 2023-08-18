@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>동적 폼 전송</title>
-  <script   
-    src="https://code.jquery.com/jquery-3.7.0.min.js" 
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
+  <script
+    src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
     crossorigin="anonymous">
   </script>
+
 </head>
 <body>
   <h1>Dynamic EJS</h1>
@@ -29,14 +30,22 @@
       <label for="f">여자</label>
     </div>
     <div>
-      <button type="button" onclick="ajax('get')">get 제출</button>
-      <button type="button" onclick="ajax('post')">post 제출</button>
+      <div>
+        <button type="button" onclick="ajax('get')">get ajax 제출</button>
+        <button type="button" onclick="ajax('post')">post ajax 제출</button>
+      </div>
+      <div>
+        <button type="button" onclick="useAxios('get')">get axios 제출</button>
+        <button type="button" onclick="useAxios('post')">post axios 제출</button>
+      </div>
+      <div>
+        <button type="button" onclick="useFetch('get')">get fetch 제출</button>
+        <button type="button" onclick="useFetch('post')">post fetch 제출</button>
+      </div>
     </div>
   </form>
   <!-- 전송 결과를 보여주는 곳 -->
-  <div class="result">
-
-  </div>
+  <div class="result"></div>
   <script>
     function ajaxGet() {
       // console.log("ajax get")
@@ -45,7 +54,7 @@
       // console.dir()은 사용자 지정 js 객체나 복잡한 DOM 요소를 파악하는 데 사용된다.
       // console.dir(form)
       // input 태그는 밸류를 속성으로 가지고 있어 가지고 있는 속성값을 가지고 올 수 있다.
-      // console.dir(form.name) 
+      // console.dir(form.name)
       // console.dir(form.gender)
       const name = form.name.value
       const gender = form.gender.value
@@ -56,8 +65,8 @@
       $.ajax({
         type : "get",
         url: "/ajax",
-        data : data, 
-        success : function(data) { 
+        data : data,
+        success : function(data) {
           // 통신이 성공하였을 경우 서버에서 리턴값을 받을 수 있음
           const result = document.getElementsByClassName("result")
           // const nameSpan = document.createElement("span")
@@ -87,7 +96,7 @@
             data : data,  // 전송 데이터
             success : function(data) {  // 요청 성공시 수행할 함수
               const result = document.getElementsByClassName("result")
-              result[0].innerText = `GET 요청 완료 이름은 ${data.name}이시고 성별은 ${data.gender}`
+              result[0].innerText = `GET 요청 완료 이름은 ${data.name}이고 성별은 ${data.gender}`
               // const result = document.querySelector(".result")
               // const nameSpan = document.createElement("span")
               // nameSpan.innerText = data.name
@@ -101,16 +110,119 @@
           $.ajax({
             type : "post",
             url: "/ajax",
-            data : data, 
-            success : function(data) { 
+            data : data,
+            success : function(data) {
               const result = document.getElementsByClassName("result")
-              result[0].innerText = `POST 요청 완료 이름은 ${data.name}이시고 성별은 ${data.gender}`
+              result[0].innerText = `POST 요청 완료 이름은 ${data.name}이고 성별은 ${data.gender}`
             }
           })
         }
       }
       action[methodType]()
     }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    // axios 요청의 결과값은 promise이므로 then, catch 사용가능
+    function useAxios(methodType) {
+      const form = document.forms["register"]
+      const result = document.querySelector(".result")
+      const data = {name : form.name.value, gender : form.gender.value}
+      const action = {
+        get : function () {
+          // axios({
+          //   method : `${methodType}`, // 요청 방식
+          //   url : "/axios", // 요청 경로
+          //   params : data, // queryString
+          // })
+          // // axios안에서는 data에 저장되어 있다.
+          // .then(function(response) {
+          //   // console.log(response) response 서버의 응답 결과
+          //   const result = document.querySelector(".result")
+
+          //   result.innerText = `get axios 요청 완료 이름은 ${response.data.name}이고 \
+          //                                         성별은 ${response.data.gender}`
+          //   const {n, g} = response.data
+          //   result.innerText = `get axios 요청 완료 이름은 ${n}이고 \
+          //                                         성별은 ${g}`
+          // })
+          // .catch(function(error) {
+          //   // error.response.status에서 에러의 상태를 의미한다.
+          //   console.log(error, error.response.status)
+          // })
+        async function axiosGet() {
+          try {
+            const response = await axios({ method : "get", url : "/axios", params : data})
+            const {name, gender} = response.data
+            result.innerText = `get axios 요청 완료 이름은 ${name}이고 성별은 ${gender}`
+          } catch (error) {
+            console.error(error)
+            if (error.response.status === 404) {
+              result.innerText = `잘못된 주소 입니다.`
+            }
+          }}
+          return axiosGet()
+        },
+        post : async function() {
+          try {
+            const response = await axios({method : `${methodType}`, url : "/axios", data : data})
+            const {name, gender} = response.data
+            result.innerText = `post axios 요청 완료 이름은 ${name}이고 성별은 ${gender}`
+          } catch(error) {
+            console.error(error)
+            if (error.response.status === 404) {
+              result.innerText = `잘못된 경로입니다.`
+            } else {
+              result.innerText = `알 수 없는 에러 발생`
+            }
+          }
+        }
+      }
+      console.log(action[methodType]())
+    }
+
+  </script>
+  <script>
+    const useFetch = (methodType) => {
+      const form = document.forms["register"]
+      const result = document.querySelector(".result")
+      const data = {name : form.name.value, gender : form.gender.value}
+
+      const action = {
+        get : function() {
+          fetch(`/fetch?name=${data.name}&gender=${data.gender}`, { // 리턴값은 프로미스로 온다.
+            // method : "get" //Get은 default이므로 method를 작성할 필요가 없다.
+          })
+          .then((response) => {
+            // console.log(response) // 넘겨주는 데이터는 바로 처리가 불가능하다.
+            // console.log(response.json()) // json으로 변환을 해야 한다. axios는 스스로 지원을 하지만 fetch는 한 단계 더 필요하다.
+            return response.json() // 반드시 변환후 리턴을 해야 다음 then에서 사용할 수 있다.
+          })
+          .then((response) => {
+            const {name, gender} = response
+            result.innerText = `post axios 요청 완료 이름은 ${name}이고 성별은 ${gender}`
+          })
+        },
+        post : async function() {
+          // 기본이 post가 아니므로 header 옵션에서 json 포맷 사용 선언
+          // body 키에 서버로 보낼 데이터 선언을 해야 한다.
+          fetch(`/fetch`, {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"}, // json 포맷 사용
+            body : JSON.stringify(data)} // 직렬화를 해야 한다.
+          ).then((response) => {
+            return response.json()
+          }).then((response) => {
+            const {name, gender} = response
+            result.innerText = `post axios 요청 완료 이름은 ${name}이고 성별은 ${gender}`
+          })
+        }
+      }
+      action[methodType]()
+    }
+  </script>
+  <script>
+    
   </script>
 </body>
 
