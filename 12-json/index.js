@@ -23,6 +23,6 @@ console.log(carJSON.options)
 const c = JSON.stringify(carJSON)
 console.log(c, typeof(c)) // string
 // confirm.log(c.model) // 접근 불가
-
 // json 변수는 JSON 형태의 문자열이므로 키값 접근 불가
+
 
