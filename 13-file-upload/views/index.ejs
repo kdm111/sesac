@@ -43,10 +43,34 @@
   <h1>동적 파일 업로드</h1>
   <input type="file" name="dynamic-userFile" id="dynamic-userFile"> <br>
   <button type="button" onclick="fileUpload()">업로드</button> <br>
-  <img src="" alt="" width="200">
+  <img src="" alt="" width="200" id="image">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-    
+    async function fileUpload() {
+      const img = document.querySelector("#image")
+      // js 내장 객체로 폼 전송, 파일 데이터를  서버로 전송해야 하는 케이스
+      // FormData() 객체를 이용하여 쉽게 구현함.
+      const formData = new FormData()
+      const file = document.querySelector("#dynamic-userFile")
+      // 지정된 js 객체의 속성에 대한 목록
+      // console.dir(file)
+      // file.files라는 배열로 담겨 있음
+      // key, value
+      formData.append("dynamicUserFile", file.files[0])
+      const result = await axios({
+        method : "post",
+        url : "/dynamic/file",
+        data : formData,
+        Headers : {
+          "Content-type" : "multipart/form-data"
+        }
+      })
+      // 서버주소 localhost:8080
+      // express는 서버내부를 들여다 보게 하는 것을 막고 있다.
+      // 오직 static으로 지정된 폴더 내부만 클라이언트에서 접근이 가능하다.
+      // img.setAttribute("src", `/public/${result.data.filename}`)
+      img.src = `/user/${result.data.path}`
+    }
   </script>
 </body>
 
