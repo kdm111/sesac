@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>과제</title>
+  <style>
+    #loginForm {
+     height: 40vh; 
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 22vw;
+     justify-content: space-around;
+    }
+    #logo {
+      width: 50%;
+    }
+    #inputContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    input {
+      height: 30px;
+      width: 80%;
+      border: 0.5px solid lightgray;
+      padding-left: 5%;
+    }
+    input:focus {
+      all : none;
+    }
+    #id {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    #pw {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    input:nth-child(2) {
+      border-top: none;
+    }
+    input:focus {
+      outline: none;
+      border: 2px solid #2db400;
+    }
+    #keepIt {
+      width: 85%;
+      display: flex;
+      align-items: center;
+      
+    }
+    #keepIt > i {
+      margin-right: 10px;
+      cursor: pointer;
+      
+    }
+    .result {
+      display: flex;
+      width: 100%;
+      justify-content: start;
+      text-align: start;
+    }
+    button {
+      display: inline-block;
+      border: none;
+      margin: 0;
+      padding: 0;
+      background: none;
+      font: inherit;
+      cursor: pointer;
+      outline: none;
+      /* Additional styles to adjust appearance as needed */
+    }
+    button {
+      height: 30px;
+      width: 85%;
+      color : white;
+      background-color: #2db400;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>axios post 로그인</h1>
+  <!-- <form action="/axios/get" method="get" name="register">
+    <label for="name">이름</label> <input type="text" name="name" id="name" value="hihi">
+    <br>
+    <fieldset>
+      <legend>성별</legend>
+      <input type="radio" name="gender" id="male" value="male" />
+      <label for="male">남자</label>
+      <input type="radio" name="gender" id="female" value="female" />
+      <label for="female">여자</label>
+    </fieldset>
+    <fieldset>
+      <legend>생년월일</legend>
+      <select name="birthYear" id="year">
+        <% for (let i = 0; i < 100; i++) { %>
+        <option value="<%= 2023 - i %>"><%= 2023 - i %></option>
+        <% } %>
+      </select>
+      <label for="year">년</label>
+      <select name="birthMonth" id="month">
+        <% for (let i = 1; i < 13; i++) { %>
+        <option value="<%= i %>"><%= i %></option>
+        <% } %>
+      </select>
+      <label for="month">월</label>
+      <select name="birthDay" id="day">
+        <% for (let i = 1; i <= 31; i++) { %>
+        <option value="<%= i %>"><%= i %></option>
+        <% } %>
+      </select>
+      <label for="day">일</label>
+    </fieldset>
+    <fieldset>
+      <legend>관심사</legend>
+      <input type="checkbox" name="hobby" id="travel" value="travel" />
+      <label for="travel">여행</label>
+      <input type="checkbox" name="hobby" id="fashion" value="fashion" />
+      <label for="fashion">패션</label>
+      <input type="checkbox" name="hobby" id="food" value="food" />
+      <label for="food">음식</label>
+    </fieldset>
+    <button type="button" onclick="formRegister()">회원가입</button>
+  </form> -->
+  <form action="/axios/post" method="post" name="login" id="loginForm">
+    <img src="https://blog.kakaocdn.net/dn/CNxUY/btqw7dnElRU/HuVZgvpT6J8n4aEYFathEk/img.jpg" alt="" id="logo">
+    <div id="inputContainer">
+      <input type="text" id="id" name="id" >
+      <input type="password" id="pw" name="pw">
+    </div>
+    <div id="keepIt">
+      <i class="fa-regular fa-circle-check"></i>
+      <span>로그인 상태 유지</span>
+    </div>
+    <div id="result">  </div>
+    <button type="button" onclick="tryLogin()">로그인</button>
+  </form>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const form = document.forms["register"]
+    const loginForm = document.forms["login"]
+    const icon = document.querySelector("i")
+    const result = document.querySelector("#result")   
+    async function formRegister() {
+      const data = {
+        name : form.name.value,
+        gender : form.gender.value,
+        birth : `${form.birthYear.value}년 ${form.birthMonth.value}월 ${form.birthDay.value}일`,
+        hobby : []
+      }
+      form.hobby.forEach((el) => {
+        if(el.checked) {
+          data["hobby"].push(el.id)
+        }
+      })
+      await axios({
+        method: "get", 
+        url : "/axios/get",
+        params : data
+      })
+      .then((res) => {
+        result.innerHTML = `<b style="color:blue;">${res.data.name}님 환영합니다</b>`
+      })
+    }
+    async function tryLogin() {
+      const data = {
+        id : loginForm.id.value,
+        pw : loginForm.pw.value,
+      }
+      await axios({
+        method : "post",
+        url : "/axios/post",
+        data : data,
+      })
+      .then(() => {
+        result.innerHTML = `<p style="color:blue; font-size:14px;">로그인에 성공하셨습니다. </p>`
+      })
+      .catch(() => {
+        result.innerHTML = `<p style="color:red; font-size:14px;">아이디 또는 비밀번호를 잘못 입력하셨습니다.<br>입력하신 내용을 다시 확인해 주세요</p>`   
+      })
+    }
+    icon.addEventListener("click", (e) => {
+      e.target.style.color = "green"
+      e.target.style.fontSize = "30px"
+    })
+  </script>
+</body>
+</html>

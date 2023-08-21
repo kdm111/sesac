@@ -49,3 +49,18 @@ app.post("/fetch", (req, res) => {
   res.json(req.body)
 })
 
+app.get("/axios/get", (req, res) => {
+  res.send(req.query)
+})
+
+const id = '1'
+const pw = '1'
+
+app.post("/axios/post", (req, res) => {
+  console.log(req.body)
+  if (id === req.body.id && pw === req.body.pw) {
+    res.json({isLogin : true})
+  } else {
+    res.status(401).json({isLogin : false})
+  }
+})
