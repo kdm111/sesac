@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    form {
+      width: 20vw;
+      height: 20vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    form > * {
+      height: 10vh;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <h1>싱글 파일 업로드</h1>
+  <!-- mult는 enctype="multipart/form-data"에서만 작동함 -->
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="userFile"> <br>
+    <input type="text" name="title"> <br>
+    <button type="submit">업로드</button>
+  </form>
+  <h1>다중 파일 업로드 v1</h1>
+  <form action="/upload/array" method="post" enctype="multipart/form-data">
+    <!-- multiple 속성을 통해 다중 파일을 업로드 할 수 있음 -->
+    <input type="file" name="userFiles" multiple> <br>
+    <input type="text" name="title"> <br>
+    <button type="submit">업로드</button>
+  </form>
+  <h1>다중 파일 업로드 v2</h1>
+  <form action="/upload/fields" method="post" enctype="multipart/form-data">
+    <input type="file" name="userFile1"> <br>
+    <input type="text" name="title1"> <br>
+    <input type="file" name="userFile2"> <br>
+    <input type="text" name="title2"> <br>
+    <button type="submit">업로드</button>
+  </form>
+  <h1>동적 파일 업로드</h1>
+  <input type="file" name="dynamic-userFile" id="dynamic-userFile"> <br>
+  <button type="button" onclick="fileUpload()">업로드</button> <br>
+  <img src="" alt="" width="200">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    
+  </script>
+</body>
+
+</html>

@@ -47,20 +47,36 @@ app.post("/upload", uploadDetail.single("userFile"), (req, res) => {
   // req.body에는 파일외의 정보가 객체로 들어가 있다.
   console.log(req.body)
   res.send("upload success")
+  // req.body
+  // {
+  //   fieldname: 'userFile', // 폼에 정의한 nameValue
+  //   originalname: 'blackpanther.jpeg', // originalName
+  //   encoding: '7bit', // encoding type
+  //   mimetype: 'image/jpeg', // file type
+  //   destination: 'uploads/', // file dir
+  //   filename: '94140fcc2af428c4bb2d6d16f532e068', // dest fileName
+  //   path: 'uploads/94140fcc2af428c4bb2d6d16f532e068', // file path
+  //   size: 6558 // file size
+  // }
 })
 
-// req.body
-// {
-//   fieldname: 'userFile', // 폼에 정의한 nameValue
-//   originalname: 'blackpanther.jpeg', // originalName
-//   encoding: '7bit', // encoding type
-//   mimetype: 'image/jpeg', // file type
-//   destination: 'uploads/', // file dir
-//   filename: '94140fcc2af428c4bb2d6d16f532e068', // dest fileName
-//   path: 'uploads/94140fcc2af428c4bb2d6d16f532e068', // file path
-//   size: 6558 // file size
-// }
+// array는 여러 파일을 한 번에 업로드할 때 사용한다.
+// array는 req.files를 만들어 준다.
+app.post("/upload/array", uploadDetail.array("userFiles"), (req, res) => {
+  // 파일의 정보가 배열로 찍힌다.
+  console.log(req.files)
+  console.log(req.body)
+  res.send("multiple v1 upload success")
+})
 
+// fields() : 여러 파일을 한 번에 각각 인풋에 업로드 할 때
+// req.files에서 file 정보를 확인
+// fields의 매개 변수로 input 태그의 name을 각각 넣는다.
+app.post("/upload/fields", uploadDetail.fields([{name : "userFile1"}, {name : "userFile2"}]), (req, res) => {
+  console.log(req.files) // {userFile1 : {...}, userFile2 : {...}}
+  console.log(req.body)
+  res.send("multiple v2 upload success")
+})
 
 // 사용할 템플릿 엔진을 설정
 app.set("view engine", "ejs")
@@ -71,7 +87,7 @@ app.use("/public", express.static(__dirname + "/static"))
 
 
 // body-parser
-
+// 
 // express.urlencoded  
 // express 서버로 post 요청을 할 때 사용한다.
 // 요청 본문에 있는 데이터를 해석해서 req.body 객체로 만들어 주는 미들웨어
@@ -82,13 +98,27 @@ app.use(express.json())
 
 
 
-
-
+const register = multer({
+  storage : multer.diskStorage({
+    destination(req, file, done) {
+      done(null, "uploads/")
+    },
+    filename(req, file, done) {
+      const ext = path.extname(file.originalname)
+      done(null, req.body.name + ext)
+    }
+  })
+})
 
 app.get("/", (req, res) => {
   res.render("index")
 })
-
+app.get("/register", (req, res) => {
+  res.render("register")
+})
+app.post("/register", register.single("image"), (req, res) => {
+  res.send("회원가입 생성 완료")
+})
 
 app.listen(PORT, () => {
   console.log(`${PORT} listening`)
