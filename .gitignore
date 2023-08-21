@@ -12,3 +12,4 @@ images/
 *.jpg
 *.png
 .eslintrc
+uploads/
