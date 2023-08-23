@@ -98,17 +98,6 @@ app.use(express.json())
 
 
 
-const register = multer({
-  storage : multer.diskStorage({
-    destination(req, file, done) {
-      done(null, "uploads/")
-    },
-    filename(req, file, done) {
-      const ext = path.extname(file.originalname)
-      done(null, req.body.name + ext)
-    }
-  })
-})
 
 app.post("/dynamic/file", uploadDetail.single("dynamicUserFile"), (req,res) => {
   console.log(req.file)
@@ -121,8 +110,30 @@ app.get("/", (req, res) => {
 app.get("/register", (req, res) => {
   res.render("register")
 })
+const register = multer({
+  storage : multer.diskStorage({
+    destination(req, file, done) {
+      done(null, "uploads/")
+    },
+    filename(req, file, done) {
+      const ext = path.extname(file.originalname)
+      done(null, req.body.id + ext)
+    }
+  })
+})
+let obj;
 app.post("/register", register.single("image"), (req, res) => {
-  res.send("회원가입 생성 완료")
+  obj = {
+    "imgPath" : `/user/${req.file.path}`,
+    "id" : req.body.id,
+    "pw" : req.body.pw,
+    "name" : req.body.name,
+    "age" : req.body.age
+  }
+  res.redirect("/result")
+})
+app.get("/result", (req, res) => {
+  res.render("result", {obj})
 })
 
 app.listen(PORT, () => {

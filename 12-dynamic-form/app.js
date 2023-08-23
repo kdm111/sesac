@@ -16,11 +16,10 @@ app.listen(PORT, () => {
 })
 
 app.get("/", (req, res) => {
-  const obj = {}
-  obj["PORT"] = PORT
-  obj["image"] = "/public/cafe.jpeg"
-  res.render("dynamic", {obj})
-
+  // const obj = {}
+  // obj["PORT"] = PORT
+  // obj["image"] = "/public/cafe.jpeg"
+  res.render("index", {})
 })
 
 app.get("/ajax", (req, res) => {
@@ -29,7 +28,6 @@ app.get("/ajax", (req, res) => {
 app.post("/ajax", (req, res) => {
   res.send(req.body)
 })
-
 
 app.get("/axios", (req, res) => {
   res.send(req.query)
@@ -57,11 +55,19 @@ app.get("/axios/get", (req, res) => {
 const id = '1'
 const pw = '1'
 
-app.post("/axios/post", (req, res) => {
+// app.post("/axios/post", (req, res) => {
+//   console.log(req.body)
+//   if (id === req.body.id && pw === req.body.pw) {
+//     res.json({isLogin : true})
+//   } else {
+//     res.status(401).json({isLogin : false})
+//   }
+// })
+
+app.post("/login", (req, res) => {
   console.log(req.body)
-  if (id === req.body.id && pw === req.body.pw) {
-    res.json({isLogin : true})
-  } else {
-    res.status(401).json({isLogin : false})
+  if (req.body.id != id || req.body.pw != pw) {
+    res.status(401).json({message : "아이디 혹은 비밀번호가 정확하지 않습니다."})
   }
 })
+

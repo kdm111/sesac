@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: gray;
+    }
+    .container {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left : 50%;
+      transform: translate(-50%, -50%);
+      width: 40vw;
+      height: 80vh;
+      background-color: white;
+      border-radius: 15px;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 5px 5px rgba(0,0,0,0.5)
+    }
+  </style>
+  <title>Result</title>
+</head>
+<body>
+  <div class="container">
+    <img src="<%= obj.imgPath%>" alt="" width="200px"><br>
+    <h1><%=obj.id %>님 환영합니다.</h1>
+    <p>비밀번호 : <%= obj.pw %></p>
+    <p>이름 : <%= obj.name %></p>
+    <p>나이 : <%= obj.age %></p>
+  </div>
+</body>
+</html>
