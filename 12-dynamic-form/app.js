@@ -37,7 +37,6 @@ app.post("/axios", (req, res) => {
   res.send(req.body)
 })
 
-
 app.get("/fetch", (req, res) => {
   console.log(req.query)
   res.send(req.query)

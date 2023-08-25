@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Not Found</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
+      padding: 100px;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: #ff5733;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .search-bar {
+      width: 60%;
+      max-width: 400px;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff5733;
+      color: #fff;
+      font-size: 18px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #e53e00;
+    }
+  </style>
+</head>
+<body>
+  <h1>Oops! Page not found</h1>
+  <p>The page you are looking for might have been removed or is temporarily unavailable.</p>
+  <form action="/search" method="GET">
+    <input class="search-bar" type="text" name="q" placeholder="Search...">
+    <button class="btn" type="submit">Search</button>
+  </form>
+  <p>Or, return to <a href="/">homepage</a>.</p>
+</body>
+</html>
+
+
+
+
+
+

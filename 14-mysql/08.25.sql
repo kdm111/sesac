@@ -232,6 +232,11 @@ SELECT * FROM instructor NATURAL JOIN teaches;
 
 
 
-
+-- DCL
+-- GRANT : 특정 DB 사용자에게 특별한 작업 부여
+-- 모든 테이블에 접근을 부여할 수는 없다.
+-- REVOKE : 특정 DB 사용자에게 특별한 작업 박탈
+-- 신입이 실무에서 쓸 일이 거의 없다.
+-- 
 
 
