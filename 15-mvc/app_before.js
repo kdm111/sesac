@@ -60,8 +60,8 @@ app.get("/comment/:id", (req, res) => {
     if (error) res.redirect("/404")
     else res.send(html)
   })
-
 })
+
 app.get("/test/:id/:name", (req, res) => {
   console.log(req.params)
   res.send("done")
