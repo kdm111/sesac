@@ -115,6 +115,123 @@ GROUP BY custid;
 
 
 
+-- JOIN
+-- 
+SELECT COUNT(*) FROM customer;
+SELECT COUNT(*) FROM orders;
+
+-- 조건 없이 테이블 조인 == CROSS JOIN
+SELECT * FROM customer, orders;
+
+-- WHERE 조건을 이용해 조인 조건을 추가
+-- TABLENAME.attribute를 하게되면 테이블의 속성을 가리킬 수 있다.
+SELECT * FROM customer, orders
+WHERE customer.custid = orders.custid
+ORDER BY customer.custid;
+
+
+-- 조인 방식을 지정할 수 있다.
+-- inner join 
+SELECT * FROM customer INNER JOIN orders
+ON customer.custid = orders.custid;
+
+
+-- 고객 이름과 고객이 주문한 상품명, 상품 가격 조회
+SELECT custname, prodname, price, amount FROM customer INNER JOIN orders
+ON customer.custid = orders.custid; -- 동일한 것을 가리킬 때는 무엇을 가리키는 지 적어야 한다.
+
+-- 고객 이름별로 주문한 제품 총 구매액을 고객 별로 정렬
+SELECT custname, SUM(amount * price) AS "total_price" 
+FROM customer INNER JOIN orders
+ON customer.custid = orders.custid
+GROUP BY custname
+ORDER BY total_price DESC;
+
+-- 
+-- https://ju-hy.tistory.com/102
+drop table instructor;
+create table instructor (
+	id int primary key,
+    name varchar(7),
+    dept_name varchar(7),
+    salary int
+);
+
+drop table teaches;
+create table teaches (
+	id int primary key,
+    course varchar(7),
+    semester varchar(7),
+    year varchar(4)
+);
+
+
+insert into instructor values (1, 'james', '심리', 95000);
+insert into instructor values (2, 'john', '컴공', 95000);
+
+insert into teaches values (1, '운영체제', '봄', '2022');
+insert into teaches values (2, '상담심리', '가을', '2023');
+
+SELECT * FROM instructor;
+SELECT * FROM teaches;
+
+/*
+SQL에서 기본적으로 JOIN 키워드를 사용하거나 콤마(,)를 통해 연결하면 Inner Join 연산을 수행한다.
+이 때, 조건이 설정되지 않은 Inner Join은 Cross Join과 같은 연산을 수행한다.
+*/
+SELECT * FROM instructor JOIN teaches;
+SELECT * FROM instructor, teaches;
+
+/*
+이 때, Inner Join 뒤에 ON 키워드를 통해 일치하는 속성을 기준으로 결합할 수도 있으며, 이를 Equal Join이라고 한다.
+조건에 맞는 행만 조인한다.
+*/
+SELECT * FROM instructor I JOIN teaches T ON I.id=T.id;
+
+/*
+Outer Join은 공통된 부분만 결합하는 Inner Join과 다르게 공통되지 않은 row도 유지한다.
+이 때, 왼쪽 테이블의 row를 유지하면 Left Outer Join,
+오른쪽 테이블의 row를 유지하면 Right Outer Join,
+양쪽 테이블의 row를 모두 유지하면 Full Outer Join이다.
+*/
+delete from teaches where id <= 2;
+
+insert into instructor values (3, 'mark', '수학', 75000);
+insert into instructor values (4, 'tom', '심리', 90000);
+insert into teaches values (3, '인공지능', '봄', '2022');
+insert into teaches values (4, '사회심리', '가을', '2023');
+insert into teaches values (5, '네트워크', '봄', '2022');
+insert into teaches values (6, '알고리즘', '가을', '2023');
+
+select * from instructor;
+select * from teaches;
+
+-- left outer join
+-- 강사를 기준으로 연결이 안되면 null처리 
+-- left
+SELECT * FROM instructor I LEFT OUTER JOIN teaches T ON I.id=T.id;
+
+-- right outer join
+-- 과목을 기준으로 합침. 연결이 안되면 null처리.
+-- right
+SELECT * FROM instructor I RIGHT OUTER JOIN teaches T ON I.id=T.id;
+
+-- full outer join 
+-- 참고) mysql 에서는 full outer join 을 지원하지 않음
+-- left join과 right join을 union 하여 full outer join 사용 가능
+-- 합집합
+-- SELECT * FROM instructor I FULL OUTER JOIN teaches T ON I.id=T.id; -- error code 1064: syntax error
+SELECT * FROM instructor I LEFT OUTER JOIN teaches T ON I.id=T.id
+UNION -- 결합
+SELECT * FROM instructor I RIGHT OUTER JOIN teaches T ON I.id=T.id;
+
+-- natural join
+-- 같은 값을 갖는 항목끼리 결합. 같은 값 없다면 해당 항목 제외
+-- 교집합
+SELECT * FROM instructor NATURAL JOIN teaches;
+
+
+
 
 
 
