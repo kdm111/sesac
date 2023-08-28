@@ -5,15 +5,15 @@ const controller = require("../contoller/Cmain")
 const router = express.Router()
 
 router.get("/", (req, res) => {
-  controller.main()
+  controller.main(req, res)
 })
 
 router.get("/comments", (req, res) => {
-  controller.comments()
+  controller.comments(req, res)
 })
 
 router.get("/comment/:id", (req, res) => {
-  controller.comment()
+  controller.comment(req, res)
 })
 
 
