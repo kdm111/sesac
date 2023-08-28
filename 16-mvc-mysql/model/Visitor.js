@@ -14,6 +14,19 @@ exports.getVisitors = (callBack) => {
     callBack(rows)
   })
 }
+exports.postVisitor = (data, callBack)  => {
+  // 매개변수
+  // data : 프론트엔드 데이터, 콜백 : 쿼리 실행 후 호출할 함수
+  conn.query(`
+    INSERT INTO visitor(name, comment)
+      VALUES ("${data.name}", "${data.comment}");
+  `,(err, rows) => {
+    if (err)
+      throw (err)
+    console.log("model >>", rows.insertId)
+    callBack(rows.insertId)
+  })
+}
 
 
 

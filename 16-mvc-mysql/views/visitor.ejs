@@ -1,18 +1,24 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>방명록</title>
+  
 </head>
 <body>
-
-  <fieldset>
-    <legend>방명록 등록</legend>
-    <input type="text" placeholder="사용자 이름" name="name">
-    <input type="text" placeholder="방명록" name="comment">
-    <button>등록</button>
-  </fieldset>
+  
+  <form name="visitor-form">
+    <fieldset>
+      <legend>방명록 등록</legend>
+      <input type="text" id="name" placeholder="사용자 이름" /> <br />
+      <input type="text" id="comment" placeholder="방명록" /> <br />
+      <div id="button-group">
+      <button type="button" onclick="createVisitor()">등록</button>
+      </div>
+    </fieldset>
+  </form>
   <table>
     <thead>
       <th>ID</th>
@@ -27,13 +33,14 @@
           <td><%= visitor.id%> </td>
           <td><%= visitor.name%> </td>
           <td><%= visitor.comment%> </td>
-          <td><button>수정</button> </td>
-          <td><button>삭제</button></td>
+          <td><button onclick="">수정</button> </td>
+          <td><button onclick="">삭제</button></td>
         </tr>
       <% } %>
     </tbody>
   </table>
   <a href="/">HOME</a>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/index.js"></script>
 </body>
 </html>
