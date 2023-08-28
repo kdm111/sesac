@@ -1,11 +1,17 @@
-const visitor = require("../model/Visitor.js")
+const Visitor = require("../model/Visitor.js")
 
 exports.getIndex = (req, res) => {
   res.render("index")
 }
 exports.getVisitorPage = (req, res) => {
-  res.render("visitor", {data : visitor.getVisitors()})
+  Visitor.getVisitors((result) => {
+    // console.log("controller >>", result)
+    res.render("visitor", {data : result})
+  })
 }
+
 exports.get404Page = (req, res) => {
   res.render("404page")
 }
+
+
