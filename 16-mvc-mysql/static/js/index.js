@@ -21,8 +21,8 @@ function createVisitor() {
         <td>${id}</td>
         <td>${name}</td>
         <td>${comment}</td>
-        <td><button onclick="editComment()">수정</button> </td>
-        <td><button onclick="deleteComment()">삭제</button></td>
+        <td><button onclick="editComment(${id})">수정</button> </td>
+        <td><button onclick="deleteVisitor(this, ${id})">삭제</button></td>
       </tr>
     `
     tbody.insertAdjacentHTML("afterbegin", newComment)
@@ -31,9 +31,21 @@ function createVisitor() {
   
 }
 
-function editComment() {
-
-}
-function deleteComment() {
-
+function deleteVisitor(obj, id) {
+  console.log(obj, id)
+  if (!confirm("정말 삭제하시겠습니까?")) {
+    return ;
+  }
+  axios({
+    method : "delete",
+    url : "/visitor",
+    data : {
+      id : id
+    }
+  })
+  .then((res) => {
+    console.log("delete 요청에 대한 응답", res.data)
+    alert("삭제 성공")
+    obj.parentElement.parentElement.remove() // button > td > tr로 넘어가서 삭제
+  })
 }

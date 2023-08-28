@@ -28,7 +28,17 @@ exports.postVisitor = (data, callBack)  => {
   })
 }
 
-
+exports.deleteVisitor = (id, callBack) => {
+  conn.query(`
+    DELETE FROM visitor
+    WHERE id = ${id};
+  `, (err, rows) => {
+    if (err)
+      throw (err)
+    console.log("model >>", rows)
+    callBack(true)
+  })
+}
 
 
 

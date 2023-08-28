@@ -30,11 +30,13 @@
     <tbody>
       <% for (let visitor of data) { %>
         <tr>
-          <td><%= visitor.id%> </td>
-          <td><%= visitor.name%> </td>
-          <td><%= visitor.comment%> </td>
-          <td><button onclick="">수정</button> </td>
-          <td><button onclick="">삭제</button></td>
+          <td><%= visitor.id %> </td>
+          <td><%= visitor.name %> </td>
+          <td><%= visitor.comment %> </td>
+          <td><button onclick="editVisitor()">수정</button> </td>
+          <td>
+            <button onclick="deleteVisitor(this, '<%- visitor.id %>')">삭제</button>
+          </td>
         </tr>
       <% } %>
     </tbody>
