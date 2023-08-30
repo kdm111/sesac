@@ -41,7 +41,7 @@ function editVisitor(id) {
     url : `/visitor/${id}`,
   }) // params
   .then((response) => {
-    const {name, comment} = response.data.result[0]
+    const {name, comment} = response.data
     const form = document.forms["visitor-form"]
     form.name.value = name
     form.comment.value = comment
@@ -66,9 +66,8 @@ function doEdit(id) {
     }
   })
   .then((response) => {
-    if (response.data.isUpdated) {
+    if (response.status === 201) {
       alert("수정이 완료되었습니다.")
-      // location.href="/visitors"
     }
     const tr = document.querySelector(`#tr_${id}`).children
     tr[1].textContent = form.name.value
@@ -90,7 +89,7 @@ function deleteVisitor(obj, id) {
       id : id
     }
   })
-  .then((res) => {
+  .then(() => {
     alert("삭제 성공")
     obj.parentElement.parentElement.remove() // button > td > tr로 넘어가서 삭제
     cleanForm()

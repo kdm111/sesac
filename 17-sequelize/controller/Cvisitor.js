@@ -1,4 +1,7 @@
-const Visitor = require("../model/Visitor.js")
+// 옛날 코드 mvc
+// const Visitor = require("../model/Visitor.js")
+// models/Visitor 객체
+const {Visitor} = require("../models")
 
 exports.getIndex = (req, res) => {
   res.render("index")
@@ -6,35 +9,94 @@ exports.getIndex = (req, res) => {
 exports.getResiter = (req, res) => {
   res.render("register")
 }
-exports.getVisitorPage = (req, res) => {
-  Visitor.getVisitors((result) => {
-    // console.log("controller >>", result)
-    res.render("visitor", {data : result})
+exports.getVisitorPage = async (req, res) => {
+  // [Before]
+  // Visitor.getVisitors((result) => {
+  //   // console.log("controller >>", result)
+  //   res.render("visitor", {data : result})
+  // })
+
+  // [ORM]
+  const response = await Visitor.findAll({
+    order : [["id", "DESC"]],
+  })
+  res.render("visitor", {data : response})
+}
+
+exports.createVisitor = async (req, res) => {
+  // [BEFORE]
+  // Visitor.postVisitor(req.body, (insertId) => {
+  //   res.send({id : insertId, name : req.body.name, comment : req.body.comment})
+  // })
+
+  // [ORM]
+  // const {name, comment} = req.body
+  // const response = await Visitor.create ({
+  //   name,
+  //   comment
+  // })
+  // res.send(response)
+  Visitor.create(req.body)
+  .then((response) => {
+    res.status(201).send(response.dataValues)
   })
 }
-exports.createVisitor = (req, res) => {
-  Visitor.postVisitor(req.body, (insertId) => {
-    res.send({id : insertId, name : req.body.name, comment : req.body.comment})
+
+exports.deleteVisitor = async (req, res) => {
+  // [before]
+  // const {id} = req.body
+  // Visitor.deleteVisitor(id, (result) => {
+  //   res.send(result)
+  // }) 
+
+  // [ORM]
+  // const {id} = req.body
+  // const response = await Visitor.destroy({
+  //  where : {id : id}
+  // })
+  // res.send(response)
+  Visitor.destroy({
+    where : {id : req.body.id}
+  })
+  .then(() => {
+    res.status(204).send(true)
   })
 }
-exports.deleteVisitor = (req, res) => {
-  const {id} = req.body
-  Visitor.deleteVisitor(id, (result) => {
-    res.send(result)
-  }) 
-}
+
 exports.getVisitor = (req, res) => {
   // req.query /visitor?id=5 query는 보여도 되는 정보
   // req.params /visitor/:id 
-  const {id} = req.params
-  Visitor.getVisitor(id, (result) => {
-    res.json({result})
+  // [BEFORE]
+  // const {id} = req.params
+  // Visitor.getVisitor(id, (result) => {
+  //   res.json({result})
+  // })
+
+  // [ORM]
+  Visitor.findOne({
+    where : {id : req.params.id}
+  })
+  .then((response) => {
+    res.json(response.dataValues)
   })
 }
 
 exports.updateVisitor = (req, res) => {
-  Visitor.updateVisitor(req.body, () => {
-    res.json({isUpdated : true})
+  // [BEFORE]
+  // Visitor.updateVisitor(req.body, () => {
+  //   res.json({isUpdated : true})
+  // })
+
+  // [ORM]
+  // update({변경될 값}, {조건문})
+  Visitor.update({
+    name : req.body.name,
+    comment : req.body.comment,
+  }, {
+    where : {id : req.body.id}
+  })
+  .then(() => {
+    res.status(201).send()
   })
 }
 
