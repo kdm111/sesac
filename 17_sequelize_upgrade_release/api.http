@@ -1,0 +1,55 @@
+@team_name = "k"
+
+@server = http://localhost:8080
+@player_id = 2
+@team_id = 1
+### 전체 선수 조회
+### 문장 간 제한
+GET {{server}}/players
+### 
+GET {{server}}/players/1
+### post, put은 보내는 타입을 명시해야 한다. xml or json ### 데이터는 한 줄 띄어놓고 작성해야 한다.
+POST {{server}}/players
+Content-Type: application/json
+
+{
+    "name" : "손흥민",
+    "age" : 30,
+    "team_id" : 2
+}
+### 플레이어 업데이트
+PATCH {{server}}/players/{{player_id}}/team
+Content-Type: application/json
+
+{
+    "team_id" : 5
+}
+### 플레이어 삭제
+DELETE {{server}}/players/{{player_id}}
+
+### 전체 팀 조회
+GET {{server}}/teams
+
+### 특정 팀 조회
+GET {{server}}/teams/{{team_id}}
+
+### 특정 팀 수정
+PATCH {{server}}/teams/{{team_id}}
+Content-Type: application/json
+
+{
+    "team_id" : 1,
+    "name" : "SSG"
+}
+
+### 특정 팀 삭제
+DELETE  {{server}}/teams/{{team_id}}
+
+### 특정 팀의 모든 선수
+GET {{server}}/teams/{{team_id}}/players
+
+### 전체 팀 조회에서 이름 오름차순
+GET {{server}}/teams?sort=deasc&key=name
+
+### 전체 팀 중에서 쿼리 스트링으로 하나의 선택
+GET {{server}}/teams?search=kt

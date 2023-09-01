@@ -5,7 +5,7 @@ insert into team(name, createdAt, updatedAt) values
   ('lg', now(), now());
 
 insert into player(name, age, createdAt, updatedAt, team_id) values 
-  ('홍길동', 20, now(), now(), 1), 
+  ('홍길동', 20, now(), now(), 1), # now() 입력된 순간 자동 시간
   ('성춘향', 21, now(), now(), 3), 
   ('김첨지', 22, now(), now(), 2), 
   ('김수지', 23, now(), now(), 4), 
