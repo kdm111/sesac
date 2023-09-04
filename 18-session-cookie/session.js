@@ -22,7 +22,6 @@ app.use(session({
   }
 }))
 
-
 app.get('/', (req, res) => {
   res.render("session")
 });

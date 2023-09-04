@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 8080;
 const cookieParser = require("cookie-parser")
+const expressSession = require("express-session")
 
 app.set('view engine', 'ejs');
 app.set("views", "./views")
@@ -25,6 +26,14 @@ app.get('/', (req, res) => {
 const myCookieConf = {
   // 웹 서버를 통해서만 쿠키 접근 가능하게 만듬
   // document.cookie 차단
+  // httpOnly: 웹 서버를 통해서만 크키 접근 가능 (프론트에서 document.cookie로 접근을 차단)
+  // maxAge: 쿠키 수명 (단위 ms)
+  // expires: 만료 날짜를 GMT시간설정
+  // path: 해당 디렉토리와 하위 디렉토리에서만 경로가 활성화되고 웹 브라우저는 해당하는 쿠키만 웹 서버에 전송
+  // 즉, 쿠키가 전송될 url특정 가능(기본값: /)
+  // domain: 쿠키가 전송될 도메인을 특정 가능(기본값: 현재도메인)
+  // secure: 웹브라우저와 웹서버가 https로 통신하는 경우만 쿠키를 서버에 전송
+  // signed: 쿠키의 암호화 결정(req.signedCookies객체에 들어있음)
   httpOnly : true,
   maxAge : 24 * 60 * 60 * 1000, // millisecond 단위 1분 현업에서는 maxAge를 많이 사용한다.
   signed : true, // 암호화 쿠키 할 때 사용할 옵션
