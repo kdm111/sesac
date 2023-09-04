@@ -1,4 +1,5 @@
 const express = require('express');
+const dotenv = require("dotenv")
 const app = express();
 const PORT = 8080;
 const session = require("express-session")
@@ -8,11 +9,12 @@ app.set("views", "./views")
 app.use(express.static(__dirname  + "/static"))
 app.use(express.urlencoded({extended : true}))
 app.use(express.json())
+dotenv.config()
 
 // Session 미들웨어 등록
-const mySessionSecretKey = "123"
+const mySessionSecretKey = process.env.SECRET_KEY
 app.use(session({
-  secret : `${mySessionSecretKey}`, // 쿠키 안정 전송을 위한 쿠키 서명 값
+  secret : mySessionSecretKey, // 쿠키 안정 전송을 위한 쿠키 서명 값
   resave : false, // 세션에 수정 사항이 생기지 않아도 요청마다 세션을 다시 저장
   saveUninitialized : true, // 세션에 저장할 내역이 없더라도 처음부터 세션을 생성할 지 설정
   // store : "" // 세션 데이터의 저장 장소 설정

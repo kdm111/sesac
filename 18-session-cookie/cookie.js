@@ -1,9 +1,11 @@
 const express = require('express');
+const dotEnv = require('dotenv');
 const app = express();
 const PORT = 8080;
 const cookieParser = require("cookie-parser")
 const expressSession = require("express-session")
 
+dotEnv.config()
 app.set('view engine', 'ejs');
 app.set("views", "./views")
 app.use(express.static(__dirname  + "/static"))
@@ -12,7 +14,7 @@ app.use(express.json())
 
 // 쿠키 파서 사용를 위한 미들웨어 등록
 // app.use(cookieParser()) // 일반 쿠키
-const SECRET_KEY = "125"
+const SECRET_KEY = process.env.SECRET_KEY
 app.use(cookieParser(SECRET_KEY)) // 암호화 쿠키 cookieParser("secretKey")
 
 
