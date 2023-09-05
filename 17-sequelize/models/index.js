@@ -23,4 +23,5 @@ db.Sequelize = Sequelize;
 db.Visitor = require("./Visitor.js")(sequelize, Sequelize)
 // db를 모듈화해서 내보냄
 // db(sequelize, Sequelize, Visitor)
+
 module.exports = db;

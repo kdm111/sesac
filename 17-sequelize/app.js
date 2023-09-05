@@ -7,7 +7,7 @@ const PORT = 8080
 // force : false db에 테이블이 정의되지 않았다면 정의된 대로 자동 생성
 // 정의되어 있다면 그냥 진행
 // true는 db에 테이블이 있어도 무조건 생성
-db.sequelize.sync( {force : false}).then(() => {
+db.sequelize.sync({force : false}).then(() => {
   app.listen(PORT, (req, res) => {
     console.log(`${PORT} listening`)
   })

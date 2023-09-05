@@ -1,7 +1,7 @@
 // 옛날 코드 mvc
 // const Visitor = require("../model/Visitor.js")
 // models/Visitor 객체
-const {Visitor} = require("../models")
+const { Visitor } = require("../models")
 
 exports.getIndex = (req, res) => {
   res.render("index")
