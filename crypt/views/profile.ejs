@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>profile</h1>
+  <form action="">
+
+    <input type="text" value="<%- user_id %>">
+    <input type="text" value="<%- username %>">
+    <input type="password" value="<%- password %>">
+  </form>
+  <button onclick="editUser()">회원정보수정</button>
+  <button onclick="deleteUser()">회원 탈퇴</button>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    async function deleteUser() {
+      axios({
+        method : "delete",
+        url : "/user",
+      })
+      .then(() => {
+        location.href = "/"
+      })
+    }
+  </script>
+</body>
+</html>

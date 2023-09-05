@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>signup</h1>
+  <form name="signupForm">
+    <input type="text" placeholder="user_id" name="user_id">
+    <input type="text" placeholder="username" name="username">
+    <input type="password" placeholder="password" name="password">
+  </form>
+  <button onclick="signup()"> 회원가입</button>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    async function signup() {
+      const form = document.forms["signupForm"]
+      const data = {
+        user_id : form.user_id.value,
+        username : form.username.value,
+        password : form.password.value
+      }
+      const response = await axios({
+        method : "post",
+        url : "/signup",
+        data : data
+      })
+      if (response.status === 201) {
+        location.href = `${response.data.location}`
+      }
+    }
+  </script>
+</body>
+</html>
