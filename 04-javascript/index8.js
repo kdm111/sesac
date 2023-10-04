@@ -139,4 +139,12 @@ const me = {name : 'js', gender : 'f', hobby : 'movie'}
 for (let k in me) {
   console.log(k, me.k, me[k])
 }
+console.clear()
+// reduce
+// 배열의 각 요소에 대해 주어진 reducer 함수를 실행하고 하나의 결과값을 반환한다.
+// reduce(acc, cur)
+// acc == 누적값, cur == 현재 요소
+const arr = [1,2,3,4,5]
+const initVal = 0
+console.log(arr.reduce((acc, el)=> {return acc + el}, initVal)) // 15
 
