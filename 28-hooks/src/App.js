@@ -4,11 +4,12 @@ import './App.css';
 // import UseCallbackEx from './components/UseCallbackEx';
 import UseCallbackEx2 from './components/UseCallbackEx2';
 import UseReducerEx from './components/UseReducerEx';
-import userTitle from './components/hooks/userTitle';
+import useTitle from './components/hooks/useTitle';
 import FAQ from './components/FAQ';
 
 function App() {
-  // userTitle('reactHook 연습')
+  useTitle('reactHook 연습')
+  // customHook은 자체 개발 할 일은 많이 없지만 
   return (
     <div className="App">
       {/* <UseMeMoEx /> */}
