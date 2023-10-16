@@ -1,0 +1,61 @@
+
+.head {
+    position : relative;
+    width : 100px;
+    height : 100px; 
+    border-radius : 50%;
+    background-color : darkblue;
+}
+.eye {
+    background-color : white; 
+    position : relative;
+    width : 30px ;
+    height : 30px ;
+    border-radius : 50%;
+    top : 25%;
+    left : 10%;
+}
+.pupil {
+    position : absolute;
+    background-color : black;
+    width : 20px; 
+    height : 20px; 
+    border-radius : 50%;
+    top : 25%;
+}
+.body1 {
+    position : absolute;
+    background-color : blue;
+    width : 100px;
+    height : 100px;
+    border-radius : 50%;
+    top:75%;
+    left:20%;
+}
+.body2 {
+    position : absolute;
+    background-color : skyblue;
+    width : 100px;
+    height : 100px;
+    border-radius : 50%;
+    top:100%;
+    left:80%;
+}
+.body3 {
+    position : absolute;
+    background-color : aqua;
+    width : 100px;
+    height : 100px;
+    border-radius : 50%;
+    top:110%;
+    left:150%;
+}
+.body4 {
+    position : absolute;
+    background-color : aquamarine;
+    width : 100px;
+    height : 100px;
+    border-radius : 50%;
+    top:120%;
+    left:190%;
+}

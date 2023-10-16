@@ -1,0 +1,34 @@
+@mixin box($size) {
+    width: $size;
+    height: $size;
+}
+@mixin layout() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ @mixin move($size) {
+    animation: an#{$size} 5s infinite;
+    @keyframes an#{$size}  {
+       0%    {
+           top: 0; 
+           left: 0;
+       }
+       25%   {
+           top: 0; 
+           left: $size;
+       }
+       50%   {
+           top: $size; 
+           left: $size;
+       }
+       75%   {
+           top: $size; 
+           left: 0px;
+       }
+       100%  {
+           top: 0px; 
+           left: 0px;
+       }
+   }
+ }

@@ -1,0 +1,29 @@
+@import './utils.scss';
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .circle {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        animation: rotate 30s infinite;
+        &.pink {
+            background-color: pink;
+            @include move(100px);
+        }
+        &.yellow {
+            background-color: yellow;
+            @include move(200px);
+        }
+        &.green {
+            background-color: green;
+            @include move(300px);
+
+        }
+    }
+}
+
