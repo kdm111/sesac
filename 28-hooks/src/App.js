@@ -6,7 +6,8 @@ import UseCallbackEx2 from './components/UseCallbackEx2';
 import UseReducerEx from './components/UseReducerEx';
 import useTitle from './components/hooks/useTitle';
 import FAQ from './components/FAQ';
-
+import Form from './components/react-hook-form/Form';
+import Subject from './components/react-hook-form/Subject';
 function App() {
   useTitle('reactHook 연습')
   // customHook은 자체 개발 할 일은 많이 없지만 
@@ -18,7 +19,9 @@ function App() {
         postId = {1}
       /> */}
       {/* < UseReducerEx /> */}
-      <FAQ />
+      {/* <FAQ /> */}
+      {/* <Form /> */}
+      <Subject />
     </div>
   );
 }
