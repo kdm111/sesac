@@ -4,10 +4,12 @@ import { composeWithDevTools }from 'redux-devtools-extension'
 import { combineReducers } from '@reduxjs/toolkit';
 import counterReducer from './couterReducer'
 import isVisibleReducer from './isVisibleReducer'
+import { bankReducer } from './bankReducer';
 
 const rootReducer = combineReducers({
   counter : counterReducer,
-  isVisible : isVisibleReducer
+  isVisible : isVisibleReducer,
+  bank : bankReducer,
 })
 
 export default rootReducer
