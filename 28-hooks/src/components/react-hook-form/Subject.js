@@ -31,7 +31,6 @@ export default function Subject() {
           type='number'
           {...register('age', {
             validate : {checkAge : (v) => {
-
               return v >= 0 || '나이는 0이상이여야합니다.'
             }
             }}
