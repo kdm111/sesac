@@ -57,6 +57,8 @@ enum users{
     admin = 110,
     customer = 2,
 }
+
+
 enum cafe {
     '아메리카노' = 'americano',
     '라떼' = 'latte'
@@ -87,3 +89,131 @@ const olympicGame:readonly [object, boolean] = [
 ]
 // olympicGame[1] = false
 console.log(olympicGame)
+
+let arrA: any[] = [1, true, 'string'];
+let arrB = [1, true, 'string']; 
+arrA[0] = undefined
+// arrA.push(undefined)
+// arrB.push(undefined)
+console.log(arrA, arrB)
+
+
+console.log(users.admin)
+console.log(users[110])
+console.clear()
+
+interface Student {
+    name : string;
+    isPassed : boolean;
+}
+
+const student1: Student = {
+    name :'이름1',
+    isPassed : true,
+    // addr : 'daegu' //error
+}
+
+const student2: object = {
+    name :'이름2',
+    isPassed : false,
+    addr : 'seoul'
+}
+// type Score = 'A+' | 'A' | 'B+' | 'B' | 'C+' | 'C' | 'F'
+enum Score {
+    Aplus = 'A+',
+    A = 'A',
+    Bplus = 'B+',
+    B = 'B',
+    Cplus = 'C',
+    C = 'C',
+    F = 'F'
+}
+// interface 상속
+interface baseballClub extends Student {
+    // Student를 상속받아 
+    position : string;
+    readonly height : number; // readonly를 앞에 쓰게 되면 변경이 불가능하다.
+    backNumber? : number; // 있어도 되고 없어도 되는 속성
+    // 숫자가 오게되면 grade를 의미하며 그 값은 string이 된다.
+    // 해당 Score당 하나의 값만 가질 수 있음
+    [grade : number]: Score 
+}
+
+// const otani: baseballClub = {
+//     name : 'otani',
+//     isPassed : true,
+//     position : 'two swords',
+//     height : 190,
+//     1 : 'A+',
+// }
+
+// console.log(otani)
+
+// otani.position = '투수' // 접근하여 값 변경 가능
+// console.log(otani)
+
+console.clear()
+
+console.log(Score.Cplus === Score['C'])
+console.log(Score.C === Score['C'])
+
+
+// type vs enum
+// 값 간 관계가 주어질 때 Enum을 사용하게 되면 명시적으로 파악이 가능하다.
+type Bp1 = 500 | 700 | 1000
+enum Bp2 {
+    SM = 500,
+    MD = 700,
+    LG = 1000
+}
+console.log(Bp2.LG, Bp2.MD)
+
+// 교차 타입
+// Ts는 타입 두 개 이상을 합치는 것을 의미한다.
+interface Toy {
+    name : string;
+    start(): void;
+}
+
+interface Car {
+    name : string;
+    color : string;
+    price : number;
+}
+type ToyCar = Toy & Car  
+// ToyCar는 Toy도 가지고 있고 Car도 가지고 있다.
+const ToyCar : ToyCar  = { // Toy 
+    name : 'tayo',
+    start : () => {
+        console.log(`출발`)
+    },
+    color : 'blue',
+    price : 10000
+}
+
+ToyCar.start()
+
+
+type Gender = 'Man' | 'Female'
+type Person =  {
+    name : string;
+    age : number;
+    like : string[];
+    gender : Gender;
+}
+const dan: Person = {
+    name : 'dan',
+    age : 12,
+    like : ['a', 'b'],
+    gender : 'Man'
+}
+
+type Category = '액션' | '롤플레잉'
+type Platform = 'PC' | '모바일'
+interface Game {
+    title: string;
+    price: number;
+    desc?: string;
+    category: Category;
+    platform : Platform
+}
