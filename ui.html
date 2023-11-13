@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Problem Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .problem-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .problem {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+        }
+
+        .problem input[type="checkbox"] {
+            margin-right: 15px;
+        }
+
+        .problem-content {
+            flex-grow: 1;
+        }
+
+        .problem-title {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .problem-description {
+            color: #555;
+            margin: 5px 0 0 0;
+        }
+
+        .problem-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            margin-left: 15px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Algorithm Problems</h1>
+
+        <div class="problem-card">
+            <div class="problem">
+                <input type="checkbox" id="problem1" />
+                <label for="problem1">
+                    <div class="problem-content">
+                        <div class="problem-title">Problem 1: Two Sum</div>
+                        <div class="problem-description">Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.</div>
+                    </div>
+                    <img src="problem1.jpg" alt="Problem 1" class="problem-image" />
+                </label>
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem">
+                <input type="checkbox" id="problem2" />
+                <label for="problem2">
+                    <div class="problem-content">
+                        <div class="problem-title">Problem 2: Longest Substring Without Repeating Characters</div>
+                        <div class="problem-description">Given a string s, find the length of the longest substring without repeating characters.</div>
+                    </div>
+                    <img src="problem2.jpg" alt="Problem 2" class="problem-image" />
+                </label>
+            </div>
+        </div>
+
+        <!-- Add more problems here -->
+
+    </div>
+
+</body>
+
+</html>

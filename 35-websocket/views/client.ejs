@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket</title>
+</head>
+<body>
+  <h1>WebSocket Chatting</h1>
+  <ul id="chatList">
+
+  </ul>
+  <form id="chatForm">
+    <label for="id">이름</label>
+    <input type="text" name="id" id="id" value="아이디1"><br/>
+    <label for="message">내용</label>
+    <input type="text" name="message" id="message"><br/>
+    <button>전송</button>
+  </form>
+  <script>
+    const chatForm = document.querySelector('#chatForm')
+    const chatList = document.querySelector('#chatList')
+
+    const socket = new WebSocket("ws://localhost:8080")
+    socket.addEventListener('open', (e) => {
+      console.log(`소켓 연결 ${e}`)
+    })
+    socket.addEventListener('close', (e) => {
+      console.log(`소켓 종료 ${e}`)
+    })
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const message = chatForm.querySelector('#message')
+      const id = chatForm.querySelector('#id')
+      const data = {id : id.value, message : message.value}
+      // message를 서버로 전송. 하지만 js 객체를 그대로 보내면 안된다.
+      // 웹 소켓 서버가 JS를 사용하지 않을 수 있으니 
+      // JSON을 직렬화하여 전송
+      socket.send(JSON.stringify(data))
+      message.value = ''
+    })
+    socket.addEventListener('message', (e) => {
+      const chat = JSON.parse(e.data)
+      const chatLi = document.createElement('li')
+      let chatId = document.createElement('span')
+      let chatContent = document.createElement('span')
+      chatId.textContent = `${chat.id} - `;
+      chatContent = chat.message
+      chatLi.append(chatId)
+      chatLi.append(chatContent)
+      chatList.append(chatLi)
+    })
+    socket.on('error', (error) => {
+      console.error(`에러 발생 :: ${error}`)
+    })
+  </script>
+</body>
+</html>
