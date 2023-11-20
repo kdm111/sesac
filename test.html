@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* 스크롤바를 숨깁니다 */
+    }
+    main {
+      position: relative;
+      height: 100%;
+      overflow-y: auto; /* 세로 스크롤을 활성화합니다*/
+      scroll-snap-type: y mandatory; 
+      /* 세로 방향으로 스크롤 스냅을 적용합니다 */
+    }
+    section {
+      height: 100vh; /* 뷰포트 높이에 맞춰 각 페이지의 높이를 설정합니다 */
+      scroll-snap-align: start; /* 이 페이지가 스크롤 뷰에 맞춰져야 함을 나타냅니다 */
+      overflow-y: auto;
+    }
+    div {
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section style="background-color: lightcoral;">
+      1
+      <div style="height: 1900px; background-color: azure;">2</div>
+    </section>
+    <section style="background-color: lightskyblue;">3</section>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        let lastScrollTop = window.pageYOffset || document
+      })
+    </script>
+  </main>
+</body>
+</html>

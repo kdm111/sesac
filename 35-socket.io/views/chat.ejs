@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>socket.io</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    .chat-list {
+      width: 80%;
+      background-color: aliceblue;
+      border : none;
+      display: flex;
+      flex-direction:  column;
+      position: relative;
+      overflow-y: scroll;
+      padding: 15px;
+      align-items: flex-start;
+      position: relative;
+    }
+    .new-message-alarm {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 5%;
+      width: 30%;
+      height: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: lightyellow;
+      border-radius: 15px;
+    }
+    .chat-container {
+      max-width: 50%;
+      position: relative;
+      min-height: 15vh;
+      display: flex;
+      overflow-x: hidden;
+      text-wrap: nowrap;
+      flex-direction: column;
+    }
+    .left {
+      align-self: flex-end;
+    }
+    .alarm {
+      width: 100%;
+      text-align: center;
+    }
+    .profile {
+      font-size: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color : white;
+      background-color: blue;
+      margin: 5px;
+      overflow-x: hidden;
+      text-wrap: nowrap;
+      text-overflow: ellipsis; 
+    }
+    .chat {
+      display: inline-block;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      padding: 0 10px;
+      max-width: 50%;
+      overflow-x: hidden;
+      text-wrap: nowrap;
+      text-overflow: ellipsis; 
+      max-width: 90%;
+      min-height: 5vh;
+      line-height: 5vh;
+    }
+    .my-chat {
+      background-color: gold;
+      text-align: left;
+    }
+    .other-chat {
+      background-color: lightskyblue;
+      text-align: left;
+    }
+    .d-none {
+      display: none;
+    }
+    .secret-chat {
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chat</h1>
+  <!-- <button
+    onclick="sayHello()"
+  >hello</button>
+  <button
+    onclick="sayStudy()"
+  >study</button>
+  <button
+    onclick="sayBye()"
+  >bye</button>
+  <p id="form-server"></p> -->
+
+  <main class="chat-box d-none" id="chatBox">
+    <div class="chat-list" style="height: 80vh; overflow-y: scroll;">
+      <div class="new-message-alarm d-none" id="newMessageAlarm">새로운 메시지 등장!</div>
+    </div>
+    <select id="nicknameList">
+    </select>
+    에게
+    <input 
+      type="text" 
+      placeholder="채팅을 입력해주세요" 
+      id="chatInput"
+      onkeydown="if (event.key === 'Enter') {debouncedSend()}"
+    >
+    <button onclick="send()">작성하기</button>
+  </main>
+  <div id="nicknameEntry">
+    <input 
+      type="text" 
+      placeholder="닉네임을 입력해 주세요" 
+      id="nicknameInput"
+      onkeyup="if (event.key === 'Enter') {join()}"
+    >
+    <button onclick="join()">입장하기</button>
+  </div>
+  <script>
+    const chatBox = document.querySelector('#chatBox')
+    const chatList = document.querySelector('.chat-list')
+    const nicknameEntry = document.querySelector('#nicknameEntry')
+    const client = 'client'
+    const nicknameInput = document.querySelector('#nicknameInput')
+    const chatInput = document.querySelector('#chatInput')
+    const nicknameList = document.querySelector('#nicknameList')
+    const formServer = document.querySelector('#form-server')
+    const newMessageAlarm = document.querySelector('#newMessageAlarm')
+    let currNickname;
+    let socket;
+    function isScrollAtBottom(dom) {
+      const tolerance = 5
+      return dom.scrollHeight - dom.scrollTop - dom.clientHeight < tolerance
+    }
+    chatList.addEventListener('scroll', (e) => {
+      console.log('scrollTop :', e.target.scrollTop)
+      console.log('scrollHeight :', e.target.scrollHeight)
+      console.log('clientHeight :', e.target.clientHeight)
+      if (isScrollAtBottom(e.target)) {
+        newMessageAlarm.classList.add('d-none')
+      }
+    })
+    function chatListToBottom() {
+      // 현재 div에서 scrollTop을 전체 div의 높이로 고정
+      chatList.scrollTop = chatList.scrollHeight
+    }
+    function debounce (func) {
+      let sendTimer;
+      return (() => {
+        clearTimeout(sendTimer)
+        sendTimer = setTimeout(() => {
+          func()
+        }, 10)
+      })
+    }
+    function sayHello() {
+      socket.emit('hello', {client: client, msg : 'hello'})
+      socket.on('helloKr', (data) => {
+        formServer.innerHTML = `${data.client} : ${data.msg}`;
+      })
+    }
+    function sayStudy() {
+      socket.emit('study', {client: client, msg : 'study'})
+      socket.on('studyKr', (data) => {
+        formServer.innerHTML = `${data.client} : ${data.msg}`;
+      })
+    }
+    function sayBye() {
+      socket.emit('bye', {client: client, msg : 'bye'})
+      socket.on('byeKr', (data) => {
+        formServer.innerHTML = `${data.client} : ${data.msg}`;
+      })
+    }
+    function join() {
+      socket = io.connect()
+      socket.on('error', ({msg}) => {
+        alert(`${msg}`)
+      })
+      socket.on('new', (data) => {
+        div = document.createElement('div')
+        div.classList.add('alarm')
+        div.innerHTML = `${data.client}님이 입장하셨습니다.`
+        chatList.append(div)
+      })
+      socket.on('entrySuccess', ({nicknames}) => {
+      chatBox.classList.remove('d-none')
+      nicknameEntry.classList.add('d-none')
+      nicknames.forEach((nickname) => {
+        if (nickname !== currNickname) {
+          option = document.createElement('option')
+          option.value = nickname
+          option.innerHTML = nickname
+          nicknameList.append(option)
+        }
+      })
+    })
+      socket.on('updateNicknames', ({nicknames}) => {
+      while (nicknameList.firstChild) {
+        nicknameList.removeChild(nicknameList.firstChild)
+      }
+      option = document.createElement('option')
+      option.value = 'all'
+      option.innerHTML = '전체'
+      nicknameList.append(option)
+      nicknames.forEach((nickname) => {
+        if (nickname !== currNickname) {
+          option = document.createElement('option')
+          option.value = nickname
+          option.innerHTML = nickname
+          nicknameList.append(option)
+        }
+        })
+      })
+      socket.on('newMessage', (data) => {
+        const chatContainer = document.createElement('div')
+        chatContainer.classList.add('chat-container')
+        const profile = document.createElement('div')
+        profile.classList.add('profile')
+        profile.innerText = data.nickname
+        const chat = document.createElement('div')
+        chat.classList.add('chat')
+        chat.innerText = data.msg
+        chatContainer.append(profile, chat)
+        if (data.receive !== 'all' && data.nickname === currNickname) {
+          chatContainer.classList.add('left')
+          profile.classList.add('left')
+          chat.classList.add('secret-chat')
+          chat.innerText = `[${data.receive}] ${data.msg}`
+        } else if (data.nickname === currNickname) {
+          chatContainer.classList.add('left')
+          profile.classList.add('left')
+          chat.classList.add('my-chat')
+        } else if (data.receive === currNickname) {
+          chat.classList.add('other-chat')
+          chat.classList.add('secret-chat')
+          chat.innerText = `[${data.sender}] ${data.msg}`
+        } else {
+          chat.classList.add('other-chat')
+        }
+        chatList.append(chatContainer)
+        newMessageAlarm.classList.remove('d-none')
+        if (data.nickname === currNickname) {
+          newMessageAlarm.classList.add('d-none')
+        }
+        // if (isScrollAtBottom(chatList)) {
+        //   newMessageAlarm.classList.remove('d-none')
+        // } else {
+        //   newMessageAlarm.classList.add('d-none')
+        // }
+        // chatListToBottom()
+      })
+      socket.on('updateChatList', (chats) => {
+        chats.forEach((data) => {
+          const chatContainer = document.createElement('div')
+          chatContainer.classList.add('chat-container')
+          const profile = document.createElement('div')
+          profile.classList.add('profile')
+          profile.innerText = data.nickname
+          const chat = document.createElement('div')
+          chat.classList.add('chat')
+          chat.innerText = data.msg
+          chatContainer.append(profile, chat)
+          if (data.nickname === currNickname) {
+            chatContainer.classList.add('left')
+            profile.classList.add('left')
+            chat.classList.add('my-chat')
+          } else if (data.receive === currNickname) {
+            chat.classList.add('other-chat')
+            chat.classList.add('secret-chat')
+            chat.innerText = `[비밀] ${data.msg}`
+          } else {
+            chat.classList.add('other-chat')
+          }
+          chatList.append(chatContainer)
+        })
+        setTimeout(() => {
+          chatListToBottom();
+        }, 10);
+      })
+      socket.emit('setNickname', {nickname : nicknameInput.value})
+      currNickname = nicknameInput.value
+      chatListToBottom()
+    }
+    function send() {
+      socket.emit('send', {nickname : `${currNickname}`, msg : `${chatInput.value}`, receive : `${nicknameList.value}`, sender : `${currNickname}`})
+      chatInput.value = ""
+      chatListToBottom()
+    }
+    const debouncedSend = debounce(send);
+  </script>
+</body>
+</html>
